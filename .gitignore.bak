@@ -1,14 +1,6 @@
-
-
-# Archivos de sistema operativos
-.DS_Store
-Thumbs.db
-
 # Ignorar archivos de compilación
 /build/
 /dist/
-/target/
-/out/
 
 # Ignorar dependencias de Node.js
 /node_modules/
@@ -17,18 +9,9 @@ Thumbs.db
 .env
 
 # Ignorar archivos de configuración de editores
-.idea/
 .vscode/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
+.idea/
 *.swp
 
 # Ignorar archivos de log
 *.log
-
-# Archivos temporales
-*.tmp
-*.temp
->>>>>>> de6dc83b9e1cad4bd6257e2ae19811d373c8f587

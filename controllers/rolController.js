@@ -13,7 +13,7 @@ exports.getRolById = async (req, res) => {
   try {
     const rol = await Rol.findByPk(req.params.id);
     if (!rol) {
-      return res.status(404).json({ error: "Rol not found" });
+      return res.status(404).json({ error: "Rol no encontrado." });
     }
     res.json(rol);
   } catch (error) {
@@ -34,7 +34,7 @@ exports.updateRol = async (req, res) => {
   try {
     const rol = await Rol.findByPk(req.params.id);
     if (!rol) {
-      return res.status(404).json({ error: "Rol not found" });
+      return res.status(404).json({ error: "Rol no encontrado" });
     }
     await rol.update(req.body);
     res.json(rol);
@@ -47,10 +47,10 @@ exports.deleteRol = async (req, res) => {
   try {
     const rol = await Rol.findByPk(req.params.id);
     if (!rol) {
-      return res.status(404).json({ error: "Rol not found" });
+      return res.status(404).json({ error: "Rol no encontrado" });
     }
     await rol.destroy();
-    res.json({ message: "Rol deleted" });
+    res.json({ message: "Rol eliminado" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

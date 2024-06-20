@@ -1,3 +1,5 @@
+
+
 # Archivos de sistema operativos
 .DS_Store
 Thumbs.db
@@ -29,3 +31,4 @@ Thumbs.db
 # Archivos temporales
 *.tmp
 *.temp
+>>>>>>> de6dc83b9e1cad4bd6257e2ae19811d373c8f587

@@ -18,7 +18,17 @@
   },
 ```
 
-## Iniciar proyecto.
+## Crear Base de Datos.
+
+```bash
+npx sequelize-cli db:create
+```
+
+## Ejercutar Migraciones.
+
+```bash
+npx sequelize-cli db:migrate
+```
 
 ## Para crear nuevos objetos.
 

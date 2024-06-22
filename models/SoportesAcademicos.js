@@ -2,47 +2,49 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class Disponibilidad extends Model {
+  class SoportesAcademicos extends Model {
     static associate(models) {
       this.belongsTo(models.Tutor, {
         foreignKey: 'Id_Tutor'
       });
-      this.hasMany(models.Programacion, {
-        foreignKey: 'Id_Disponibilidad'
-      });
     }
   }
-  Disponibilidad.init({
+  SoportesAcademicos.init({
     Id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
-    Id_Tutor: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    Tpo_Sesion: {
+    Programa_Academico: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    Fecha: {
-      type: DataTypes.DATE,
+    Institucion_Educativa: {
+      type: DataTypes.STRING,
       allowNull: false
     },
-    Hora_Inicio: {
-      type: DataTypes.TIME,
+    Tpo_Programa: {
+      type: DataTypes.STRING,
       allowNull: false
     },
-    Hora_Fin: {
-      type: DataTypes.TIME,
+    Area_Estudio: DataTypes.STRING,
+    Condicion: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    Soporte_Documental: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    Id_Tutor: {
+      type: DataTypes.INTEGER,
       allowNull: false
     }
   }, {
     sequelize,
-    modelName: 'Disponibilidad',
-    tableName: 'Disponibilidades',
+    modelName: 'SoportesAcademicos',
+    tableName: 'Soportes_Academicos',
     timestamps: false
   });
-  return Disponibilidad;
+  return SoportesAcademicos;
 };

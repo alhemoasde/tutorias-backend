@@ -1,28 +1,45 @@
-"use strict";
-const { Model } = require("sequelize");
+'use strict';
+const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Usuario extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      Usuario.hasMany(models.UsuarioRol, { foreignKey: "Id_Usuario" });
-      Usuario.hasOne(models.Tutor, { foreignKey: "Id_Usuario" });
-      Usuario.hasOne(models.Estudiante, { foreignKey: "Id_Usuario" });
+      this.belongsToMany(models.Rol, {
+        through: 'UsuarioRoles',
+        foreignKey: 'Id_Usuario',
+        otherKey: 'Codigo_Rol'
+      });
+      this.hasOne(models.Estudiante, {
+        foreignKey: 'Id_Usuario'
+      });
+      this.hasOne(models.Tutor, {
+        foreignKey: 'Id_Usuario'
+      });
     }
   }
-  Usuario.init(
-    {
-      username: DataTypes.STRING,
-      password: DataTypes.STRING,
-      activo: DataTypes.BOOLEAN,
+  Usuario.init({
+    Id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
     },
-    {
-      sequelize,
-      modelName: "Usuario",
+    Username: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    Password: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    Activo: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
     }
-  );
+  }, {
+    sequelize,
+    modelName: 'Usuario',
+    tableName: 'Usuarios',
+    timestamps: false
+  });
   return Usuario;
 };

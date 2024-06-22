@@ -2,39 +2,42 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class Materia extends Model {
+  class Archivo extends Model {
     static associate(models) {
-      this.hasMany(models.TutoresMaterias, {
-        foreignKey: 'Id_Materia'
-      });
-      this.hasMany(models.Tutoria, {
-        foreignKey: 'Id_Materia'
-      });
+      // Define relationships here if needed
     }
   }
-  Materia.init({
+  Archivo.init({
     Id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
+    Entidad: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    Id_Entidad: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     Nombre: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    Intensidad_Horaria: {
-      type: DataTypes.INTEGER,
+    ContentType: {
+      type: DataTypes.STRING,
       allowNull: false
     },
-    Nivel_Educativo: {
+    Url: {
       type: DataTypes.STRING,
       allowNull: false
     }
   }, {
     sequelize,
-    modelName: 'Materia',
-    tableName: 'Materias',
+    modelName: 'Archivo',
+    tableName: 'Archivos',
     timestamps: false
   });
-  return Materia;
+  return Archivo;
 };

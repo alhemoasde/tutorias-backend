@@ -2,29 +2,18 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class Disponibilidad extends Model {
+  class Programacion extends Model {
     static associate(models) {
-      this.belongsTo(models.Tutor, {
-        foreignKey: 'Id_Tutor'
-      });
-      this.hasMany(models.Programacion, {
+      this.belongsTo(models.Disponibilidad, {
         foreignKey: 'Id_Disponibilidad'
       });
     }
   }
-  Disponibilidad.init({
+  Programacion.init({
     Id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true
-    },
-    Id_Tutor: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    Tpo_Sesion: {
-      type: DataTypes.STRING,
-      allowNull: false
     },
     Fecha: {
       type: DataTypes.DATE,
@@ -37,12 +26,16 @@ module.exports = (sequelize, DataTypes) => {
     Hora_Fin: {
       type: DataTypes.TIME,
       allowNull: false
+    },
+    Id_Disponibilidad: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
   }, {
     sequelize,
-    modelName: 'Disponibilidad',
-    tableName: 'Disponibilidades',
+    modelName: 'Programacion',
+    tableName: 'Programaciones',
     timestamps: false
   });
-  return Disponibilidad;
+  return Programacion;
 };

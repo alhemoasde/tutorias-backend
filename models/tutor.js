@@ -1,35 +1,65 @@
 "use strict";
 const { Model } = require("sequelize");
+
 module.exports = (sequelize, DataTypes) => {
   class Tutor extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      Tutor.belongsTo(models.Usuario, { foreignKey: "Id_Usuario" });
-      Tutor.belongsTo(models.NivelEducativo, {
-        foreignKey: "Id_Nivel_Educativo",
+      this.belongsTo(models.Usuario, {
+        foreignKey: "Id_Usuario",
       });
-      Tutor.hasMany(models.Disponibilidad, { foreignKey: "Id_Tutor" });
-      Tutor.hasMany(models.TutorMateria, { foreignKey: "Id_Tutor" });
+      this.hasMany(models.Tutoria, {
+        foreignKey: "Id_Tutor",
+      });
+      this.hasMany(models.TutoresMaterias, {
+        foreignKey: "Id_Tutor",
+      });
+      this.hasMany(models.SoportesAcademicos, {
+        foreignKey: "Id_Tutor",
+      });
+      this.hasMany(models.Disponibilidad, {
+        foreignKey: "Id_Tutor",
+      });
+      this.hasMany(models.Calificaciones_Tutores, {
+        foreignKey: "Id_Tutor",
+      });
     }
   }
   Tutor.init(
     {
-      nombre: DataTypes.STRING,
-      apellido: DataTypes.STRING,
-      telefono: DataTypes.STRING,
-      email: DataTypes.STRING,
-      ciudad_ubicacion: DataTypes.STRING,
-      activo: DataTypes.BOOLEAN,
-      Id_Nivel_Educativo: DataTypes.INTEGER,
-      Id_Usuario: DataTypes.INTEGER,
+      Id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+      },
+      Nombre: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      Apellido: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      Telefono: DataTypes.STRING,
+      Email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      Ciudad_Ubicacion: DataTypes.STRING,
+      Activo: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+      },
+      Nivel_Educativo: DataTypes.STRING,
+      Id_Usuario: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
     },
     {
       sequelize,
       modelName: "Tutor",
+      tableName: "Tutores",
+      timestamps: false,
     }
   );
   return Tutor;

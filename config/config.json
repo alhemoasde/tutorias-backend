@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "12345",
-    "database": "tutoriaDb",
-    "host": "127.0.0.1",
+    "username": "${DB_USER}",
+    "password": "${DB_PASS}",
+    "database": "${DB_NAME}",
+    "host": "${DB_HOST}",
     "dialect": "mysql"
   },
   "test": {

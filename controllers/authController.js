@@ -1,42 +1,74 @@
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const { Usuario, Rol, Tutor, Estudiante } = require('../models');
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const { Usuario, Tutor, Estudiante, UsuarioRoles } = require("../models");
 
 // Clave secreta para JWT
-const JWT_SECRET = 'NewApp_Dev_Agil_Group';
-const ROL_TUTOR = 'TUTOR';
-const ROL_ESTUDIANTE = 'ESTUDIANTE'
+const JWT_SECRET = process.env.JWT_SECRET;
+const ROL_TUTOR = "TUTOR";
+const ROL_ESTUDIANTE = "ESTUDIANTE";
 
 // Registro de usuario
 exports.register = async (req, res) => {
-  const { username, password, codigo_rol} = req.body;
+  const { prospecto, password, codigo_rol } = req.body;
+  let roles = [];
 
   try {
-    // Verificar si el usuario ya existe
-    const existingUser = await Usuario.findOne({ where: { username } });
-    if (existingUser) {
-      return res.status(400).json({ error: 'El usuario ya existe' });
+    if (!prospecto || !password || !codigo_rol) {
+      return res.status(400).json({ error: "Todos los campos son requeridos" });
     }
 
-    if(codigo_rol===ROL_TUTOR){
-
-    }else if(codigo_rol===ROL_ESTUDIANTE){
-
-    }else{
-      return res.status(400).json({ error: 'Rol no valido para registrar el usuario.' });
+    const user = await generarUser(prospecto.email, password);
+    if (!user) {
+      return res.status(400).json({ error: "El usuario ya existe" });
     }
 
-    // Hash de la contraseña
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Crear nuevo usuario
-    const user = await Usuario.create({
-      username,
-      password: hashedPassword,
-      activo: true 
+    // Asignar roles al usuario
+    await UsuarioRoles.create({
+      id_usuario: user.id,
+      codigo_rol: codigo_rol,
     });
 
-    res.status(201).json({ message: 'Usuario registrado exitosamente' });
+    if (codigo_rol.toUpperCase() === ROL_TUTOR) {
+
+      if (!prospecto.ciudad_ubicacion || !prospecto.nivel_educativo) {
+        return res.status(400).json({ error: "Faltan campos requeridos del Tutor" });
+      }
+      // Crear nuevo Tutor
+      const tutor = await Tutor.create({
+        nombre: prospecto.nombre,
+        apellido: prospecto.apellido,
+        telefono: prospecto.telefono,
+        email: prospecto.email,
+        ciudad_ubicacion: prospecto.ciudad_ubicacion,
+        nivel_educativo: prospecto.nivel_educativo,
+        activo: true,
+        id_usuario: user.id,
+      });
+    } else if (upcodigo_rol.toUpperCase() === ROL_ESTUDIANTE) {
+      // Crear nuevo Estudiante
+      const estudiante = await Estudiante.create({
+        nombre: prospecto.nombre,
+        apellido: prospecto.apellido,
+        telefono: prospecto.telefono,
+        email: prospecto.email,
+        activo: true,
+        id_usuario: user.id,
+      });
+    } else {
+      return res
+        .status(400)
+        .json({ error: "Rol no valido para registrar el usuario." });
+    }
+
+    // Generar token
+    const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: "1h" });
+
+    res.status(201).json({
+      token: token,
+      username: user.username,
+      role: user.codigo_rol,
+      message: "Usuario registrado exitosamente",
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -50,20 +82,51 @@ exports.login = async (req, res) => {
     // Verificar si el usuario existe
     const user = await Usuario.findOne({ where: { username } });
     if (!user) {
-      return res.status(400).json({ error: 'Usuario o contraseña incorrectos' });
+      return res
+        .status(400)
+        .json({ error: "Usuario o contraseña incorrectos" });
     }
 
     // Verificar la contraseña
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ error: 'Usuario o contraseña incorrectos' });
+      return res
+        .status(400)
+        .json({ error: "Usuario o contraseña incorrectos" });
     }
 
     // Generar token
-    const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: "1h" });
 
-    res.json({ token });
+    res.status(200).json({
+      token: token,
+      username: user.username,
+      role: user.codigo_rol,
+      message: "Inicio de sesión exitoso",
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
+};
+
+// Permite guardar los atributos del usuario y retornarlo
+// para ser asignado al registro de Tutor o Estudiantes según corresponda.
+const generarUser = async (username, password) => {
+  // Verificar si el usuario ya existe
+  const existingUser = await Usuario.findOne({ where: { username } });
+  if (existingUser) {
+    return null;
+  }
+
+  // Hash de la contraseña
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  // Crear nuevo usuario
+  const user = await Usuario.create({
+    username,
+    password: hashedPassword,
+    activo: true,
+  });
+
+  return user;
 };

@@ -15,7 +15,7 @@ module.exports = {
         unique: true,
       },
       password: {
-        type: Sequelize.STRING(15),
+        type: Sequelize.STRING(255),
         allowNull: false,
       },
       activo: {

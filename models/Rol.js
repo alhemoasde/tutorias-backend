@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   class Rol extends Model {
     static associate(models) {
       this.belongsToMany(models.Usuario, {
-        through: "UsuarioRoles",
+        through: "Usuario_Roles",
         foreignKey: "codigo_rol",
         otherKey: "id_usuario",
       });

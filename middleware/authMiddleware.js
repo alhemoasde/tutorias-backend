@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const { Usuario } = require("../models");
 
 // Clave secreta para JWT
-const JWT_SECRET = "NewApp_Dev_Agil_Group";
+const JWT_SECRET = process.env.JWT_SECRET;
 
 const authMiddleware = async (req, res, next) => {
   const authHeader = req.headers.authorization;

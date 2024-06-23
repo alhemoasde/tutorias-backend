@@ -2,65 +2,54 @@
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-  class Tutor extends Model {
+  class Estudiante extends Model {
     static associate(models) {
       this.belongsTo(models.Usuario, {
-        foreignKey: "Id_Usuario",
+        foreignKey: "id_usuario",
       });
       this.hasMany(models.Tutoria, {
-        foreignKey: "Id_Tutor",
+        foreignKey: "id_estudiante",
       });
-      this.hasMany(models.TutoresMaterias, {
-        foreignKey: "Id_Tutor",
-      });
-      this.hasMany(models.SoportesAcademicos, {
-        foreignKey: "Id_Tutor",
-      });
-      this.hasMany(models.Disponibilidad, {
-        foreignKey: "Id_Tutor",
-      });
-      this.hasMany(models.CalificacionesTutores, {
-        foreignKey: "Id_Tutor",
+      this.hasMany(models.CalificacionesEstudiantes, {
+        foreignKey: "id_estudiante",
       });
     }
   }
-  Tutor.init(
+  Estudiante.init(
     {
-      Id: {
+      id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
       },
-      Nombre: {
+      nombre: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      Apellido: {
+      apellido: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      Telefono: DataTypes.STRING,
-      Email: {
+      telefono: DataTypes.STRING,
+      email: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      Ciudad_Ubicacion: DataTypes.STRING,
-      Activo: {
+      activo: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
       },
-      Nivel_Educativo: DataTypes.STRING,
-      Id_Usuario: {
+      id_usuario: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
     },
     {
       sequelize,
-      modelName: "Tutor",
-      tableName: "Tutores",
+      modelName: "Estudiante",
+      tableName: "Estudiantes",
       timestamps: true,
     }
   );
-  return Tutor;
+  return Estudiante;
 };

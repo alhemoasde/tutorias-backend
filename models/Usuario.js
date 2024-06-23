@@ -6,14 +6,14 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.belongsToMany(models.Rol, {
         through: "UsuarioRoles",
-        foreignKey: "Id_Usuario",
-        otherKey: "Codigo_Rol",
+        foreignKey: "id_usuario",
+        otherKey: "codigo_rol",
       });
       this.hasOne(models.Estudiante, {
-        foreignKey: "Id_Usuario",
+        foreignKey: "id_Usuario",
       });
       this.hasOne(models.Tutor, {
-        foreignKey: "Id_Usuario",
+        foreignKey: "id_usuario",
       });
     }
   }

@@ -1,19 +1,29 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { Usuario } = require('../models');
+const { Usuario, Rol, Tutor, Estudiante } = require('../models');
 
 // Clave secreta para JWT
 const JWT_SECRET = 'NewApp_Dev_Agil_Group';
+const ROL_TUTOR = 'TUTOR';
+const ROL_ESTUDIANTE = 'ESTUDIANTE'
 
 // Registro de usuario
 exports.register = async (req, res) => {
-  const { username, password } = req.body;
+  const { username, password, codigo_rol} = req.body;
 
   try {
     // Verificar si el usuario ya existe
     const existingUser = await Usuario.findOne({ where: { username } });
     if (existingUser) {
       return res.status(400).json({ error: 'El usuario ya existe' });
+    }
+
+    if(codigo_rol===ROL_TUTOR){
+
+    }else if(codigo_rol===ROL_ESTUDIANTE){
+
+    }else{
+      return res.status(400).json({ error: 'Rol no valido para registrar el usuario.' });
     }
 
     // Hash de la contraseña

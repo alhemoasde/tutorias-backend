@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     fecha: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
     horas_tutoria: {
       type: DataTypes.FLOAT,

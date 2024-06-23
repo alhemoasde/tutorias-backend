@@ -29,28 +29,29 @@ exports.register = async (req, res) => {
     });
 
     if (codigo_rol.toUpperCase() === ROL_TUTOR) {
-
       if (!prospecto.ciudad_ubicacion || !prospecto.nivel_educativo) {
-        return res.status(400).json({ error: "Faltan campos requeridos del Tutor" });
+        return res
+          .status(400)
+          .json({ error: "Faltan campos requeridos del Tutor" });
       }
       // Crear nuevo Tutor
       const tutor = await Tutor.create({
         nombre: prospecto.nombre,
         apellido: prospecto.apellido,
         telefono: prospecto.telefono,
-        email: prospecto.email,
+        email: prospecto.email.toLowerCase(),
         ciudad_ubicacion: prospecto.ciudad_ubicacion,
         nivel_educativo: prospecto.nivel_educativo,
         activo: true,
         id_usuario: user.id,
       });
-    } else if (upcodigo_rol.toUpperCase() === ROL_ESTUDIANTE) {
+    } else if (codigo_rol.toUpperCase() === ROL_ESTUDIANTE) {
       // Crear nuevo Estudiante
       const estudiante = await Estudiante.create({
         nombre: prospecto.nombre,
         apellido: prospecto.apellido,
         telefono: prospecto.telefono,
-        email: prospecto.email,
+        email: prospecto.email.toLowerCase(),
         activo: true,
         id_usuario: user.id,
       });
@@ -66,7 +67,7 @@ exports.register = async (req, res) => {
     res.status(201).json({
       token: token,
       username: user.username,
-      role: user.codigo_rol,
+      role: codigo_rol.toUpperCase(),
       message: "Usuario registrado exitosamente",
     });
   } catch (error) {
@@ -81,6 +82,8 @@ exports.login = async (req, res) => {
   try {
     // Verificar si el usuario existe
     const user = await Usuario.findOne({ where: { username } });
+    const userRoles = await UsuarioRoles.findOne({ where: { id_usuario:user.id }, attributes: ['codigo_rol'], });
+
     if (!user) {
       return res
         .status(400)
@@ -101,7 +104,7 @@ exports.login = async (req, res) => {
     res.status(200).json({
       token: token,
       username: user.username,
-      role: user.codigo_rol,
+      roles: userRoles,
       message: "Inicio de sesión exitoso",
     });
   } catch (error) {

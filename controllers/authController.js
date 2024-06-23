@@ -66,8 +66,11 @@ exports.register = async (req, res) => {
 
     res.status(201).json({
       token: token,
-      username: user.username,
-      role: codigo_rol.toUpperCase(),
+      userResponse: {
+        id: user.id,
+        username: user.username,
+        roles: await getRolesUser(user),
+      },
       message: "Usuario registrado exitosamente",
     });
   } catch (error) {
@@ -82,7 +85,6 @@ exports.login = async (req, res) => {
   try {
     // Verificar si el usuario existe
     const user = await Usuario.findOne({ where: { username } });
-    const userRoles = await UsuarioRoles.findOne({ where: { id_usuario:user.id }, attributes: ['codigo_rol'], });
 
     if (!user) {
       return res
@@ -103,8 +105,11 @@ exports.login = async (req, res) => {
 
     res.status(200).json({
       token: token,
-      username: user.username,
-      roles: userRoles,
+      userResponse: {
+        id: user.id,
+        username: user.username,
+        roles: await getRolesUser(user),
+      },
       message: "Inicio de sesión exitoso",
     });
   } catch (error) {
@@ -132,4 +137,20 @@ const generarUser = async (username, password) => {
   });
 
   return user;
+};
+
+const getRolesUser = async (user) => {
+  const userRoles = await UsuarioRoles.findAll({
+    where: { id_usuario: user.id },
+    attributes: ["codigo_rol"],
+  });
+
+  const roles = [];
+
+  // Iterar sobre cada objeto userRoles y agregar cada codigo_rol al array roles
+  userRoles.forEach((role) => {
+    roles.push(role.codigo_rol);
+  });
+
+  return roles;
 };

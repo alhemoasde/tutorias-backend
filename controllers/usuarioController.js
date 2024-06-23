@@ -1,13 +1,13 @@
-const { Usuario, UsuarioRoles, Tutor, Estudiante } = require('../models');
+const { Usuario, UsuarioRoles, Tutor, Estudiante } = require("../models");
 
 exports.getAllUsuarios = async (req, res) => {
   try {
     const usuarios = await Usuario.findAll({
       include: [
-        { model: UsuarioRoles },
+        //{ model: UsuarioRoles },
         { model: Tutor },
-        { model: Estudiante }
-      ]
+        { model: Estudiante },
+      ],
     });
     res.json(usuarios);
   } catch (error) {
@@ -15,10 +15,12 @@ exports.getAllUsuarios = async (req, res) => {
   }
 };
 
-
 exports.getUsuarioById = async (req, res) => {
   try {
-    const user = await Usuario.findByPk(req.params.id);
+    const user = await Usuario.findByPk(req.params.id, {
+      include: [{ model: Tutor }, { model: Estudiante }],
+    });
+
     if (!user) {
       return res.status(404).json({ error: "Usuario no encontrado." });
     }
@@ -53,9 +55,11 @@ exports.updateUsuario = async (req, res) => {
 exports.deleteUsuario = async (req, res) => {
   try {
     const user = await Usuario.findByPk(req.params.id);
+
     if (!user) {
       return res.status(404).json({ error: "Usuario no encontrado" });
     }
+
     await user.destroy();
     res.json({ message: "Usuario eliminado" });
   } catch (error) {

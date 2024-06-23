@@ -29,7 +29,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     fecha_solicitud: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      defaultValue: DataTypes.NOW
     },
     estado: {
       type: DataTypes.STRING,

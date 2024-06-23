@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.belongsToMany(models.Usuario, {
         through: "Usuario_Roles",
+        as: "usuarios",
         foreignKey: "codigo_rol",
         otherKey: "id_usuario",
       });
@@ -24,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: "Rol",
       tableName: "Roles",
-      timestamps: true
+      timestamps: true,
     }
   );
   return Rol;

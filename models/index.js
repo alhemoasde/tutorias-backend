@@ -7,7 +7,38 @@ const process = require("process");
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "development";
 const config = require(__dirname + "/../config/config.json")[env];
-const db = {};
+
+const Usuario = require("./Usuario");
+const UsuarioRoles = require("./UsuarioRoles");
+const Rol = require("./Rol");
+const Estudiante = require("./Estudiante");
+const Tutor = require("./Tutor");
+const CalificacionesEstudiantes = require("./CalificacionesEstudiantes");
+const CalificacionesTurores = require("./CalificacionesTutores");
+const Disponibilidad = require("./Disponibilidad");
+const Facturacion = require("./Facturacion");
+const Materia = require("./Materia");
+const Programacion = require("./Programacion");
+const SoportesAcademicos = require("./SoportesAcademicos");
+const TutoresMaterias = require("./TutoresMaterias");
+const Tutoria = require("./Tutoria");
+
+const db = {
+  Usuario,
+  UsuarioRoles,
+  Rol,
+  Estudiante,
+  Tutor,
+  CalificacionesEstudiantes,
+  CalificacionesTurores,
+  Disponibilidad,
+  Facturacion,
+  Materia,
+  Programacion,
+  SoportesAcademicos,
+  TutoresMaterias,
+  Tutoria,
+};
 
 let sequelize;
 if (config.use_env_variable) {
@@ -44,6 +75,7 @@ fs.readdirSync(__dirname)
     db[model.name] = model;
   });
 
+// Registrar asociaciones dinamicamente
 Object.keys(db).forEach((modelName) => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
@@ -51,6 +83,6 @@ Object.keys(db).forEach((modelName) => {
 });
 
 db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+db.Sequelize = require("sequelize");
 
 module.exports = db;

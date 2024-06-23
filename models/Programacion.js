@@ -5,29 +5,29 @@ module.exports = (sequelize, DataTypes) => {
   class Programacion extends Model {
     static associate(models) {
       this.belongsTo(models.Disponibilidad, {
-        foreignKey: 'Id_Disponibilidad'
+        foreignKey: 'id_disponibilidad'
       });
     }
   }
   Programacion.init({
-    Id: {
+    id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
-    Fecha: {
+    fecha: {
       type: DataTypes.DATE,
       allowNull: false
     },
-    Hora_Inicio: {
+    Hora_inicio: {
       type: DataTypes.TIME,
       allowNull: false
     },
-    Hora_Fin: {
+    hora_fin: {
       type: DataTypes.TIME,
       allowNull: false
     },
-    Id_Disponibilidad: {
+    id_disponibilidad: {
       type: DataTypes.INTEGER,
       allowNull: false
     }
@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Programacion',
     tableName: 'Programaciones',
-    timestamps: false
+    timestamps: true
   });
   return Programacion;
 };

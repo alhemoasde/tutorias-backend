@@ -9,20 +9,20 @@ module.exports = (sequelize, DataTypes) => {
   }
   UsuarioRoles.init(
     {
-      Id_Usuario: {
+      id_usuario: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: "Usuario",
-          key: "Id",
+          key: "id",
         },
       },
-      Codigo_Rol: {
+      codigo_rol: {
         type: DataTypes.STRING,
         allowNull: false,
         references: {
           model: "Rol",
-          key: "Codigo",
+          key: "codigo",
         },
       },
     },
@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: "UsuarioRoles",
       tableName: "Usuario_Roles",
-      timestamps: false,
+      timestamps: true,
     }
   );
   return UsuarioRoles;

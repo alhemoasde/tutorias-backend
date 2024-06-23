@@ -5,36 +5,36 @@ module.exports = (sequelize, DataTypes) => {
   class Disponibilidad extends Model {
     static associate(models) {
       this.belongsTo(models.Tutor, {
-        foreignKey: 'Id_Tutor'
+        foreignKey: 'id_tutor'
       });
       this.hasMany(models.Programacion, {
-        foreignKey: 'Id_Disponibilidad'
+        foreignKey: 'id_disponibilidad'
       });
     }
   }
   Disponibilidad.init({
-    Id: {
+    id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
-    Id_Tutor: {
+    id_tutor: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    Tpo_Sesion: {
+    tipo_sesion: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    Fecha: {
+    fecha: {
       type: DataTypes.DATE,
       allowNull: false
     },
-    Hora_Inicio: {
+    hora_inicio: {
       type: DataTypes.TIME,
       allowNull: false
     },
-    Hora_Fin: {
+    hora_fin: {
       type: DataTypes.TIME,
       allowNull: false
     }
@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Disponibilidad',
     tableName: 'Disponibilidades',
-    timestamps: false
+    timestamps: true
   });
   return Disponibilidad;
 };

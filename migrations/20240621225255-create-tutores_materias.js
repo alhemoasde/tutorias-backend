@@ -2,29 +2,37 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Tutores_Materias', {
-      Id_Tutor: {
+      id_tutor: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: 'Tutores',
-          key: 'Id'
+          key: 'id'
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
-      Id_Materia: {
+      id_materia: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: 'Materias',
-          key: 'Id'
+          key: 'id'
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
-      Costo_Hora_Tutoria: {
+      costo_hora_tutoria: {
         type: Sequelize.FLOAT,
         allowNull: false
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
       }
     });
   },

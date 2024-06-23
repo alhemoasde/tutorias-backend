@@ -6,24 +6,25 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.belongsToMany(models.Usuario, {
         through: "UsuarioRoles",
-        foreignKey: "Codigo_Rol",
-        otherKey: "Id_Usuario",
+        foreignKey: "codigo_rol",
+        otherKey: "id_usuario",
       });
     }
   }
   Rol.init(
     {
-      Codigo: {
+      codigo: {
         type: DataTypes.STRING,
         primaryKey: true,
+        unique: true,
       },
-      Descripcion: DataTypes.STRING,
+      descripcion: DataTypes.STRING,
     },
     {
       sequelize,
       modelName: "Rol",
       tableName: "Roles",
-      timestamps: false,
+      timestamps: true
     }
   );
   return Rol;

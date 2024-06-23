@@ -2,28 +2,36 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("Facturaciones", {
-      Id: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      Fecha: {
+      fecha: {
         type: Sequelize.DATE,
         allowNull: false,
       },
-      Horas_Tutoria: {
+      horas_tutoria: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      valor_hora: {
         type: Sequelize.FLOAT,
         allowNull: false,
       },
-      Valor_Hora: {
+      valor_total: {
         type: Sequelize.FLOAT,
         allowNull: false,
       },
-      Valor_Total: {
-        type: Sequelize.FLOAT,
+      createdAt: {
         allowNull: false,
+        type: Sequelize.DATE
       },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
     });
   },
   down: async (queryInterface, Sequelize) => {

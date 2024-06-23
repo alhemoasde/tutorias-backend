@@ -5,38 +5,38 @@ module.exports = (sequelize, DataTypes) => {
   class SoportesAcademicos extends Model {
     static associate(models) {
       this.belongsTo(models.Tutor, {
-        foreignKey: 'Id_Tutor'
+        foreignKey: 'id_tutor'
       });
     }
   }
   SoportesAcademicos.init({
-    Id: {
+    id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
-    Programa_Academico: {
+    programa_academico: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    Institucion_Educativa: {
+    institucion_educativa: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    Tpo_Programa: {
+    tipo_programa: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    Area_Estudio: DataTypes.STRING,
-    Condicion: {
+    area_estudio: DataTypes.STRING,
+    condicion: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    Soporte_Documental: {
+    soporte_documental: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    Id_Tutor: {
+    id_tutor: {
       type: DataTypes.INTEGER,
       allowNull: false
     }
@@ -44,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'SoportesAcademicos',
     tableName: 'Soportes_Academicos',
-    timestamps: false
+    timestamps: true
   });
   return SoportesAcademicos;
 };

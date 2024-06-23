@@ -1,10 +1,10 @@
-const { Usuario, UsuarioRol, Tutor, Estudiante } = require('../models');
+const { Usuario, UsuarioRoles, Tutor, Estudiante } = require('../models');
 
 exports.getAllUsuarios = async (req, res) => {
   try {
     const usuarios = await Usuario.findAll({
       include: [
-        { model: UsuarioRol },
+        { model: UsuarioRoles },
         { model: Tutor },
         { model: Estudiante }
       ]

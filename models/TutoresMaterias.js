@@ -5,24 +5,24 @@ module.exports = (sequelize, DataTypes) => {
   class TutoresMaterias extends Model {
     static associate(models) {
       this.belongsTo(models.Tutor, {
-        foreignKey: "Id_Tutor",
+        foreignKey: "id_tutor",
       });
       this.belongsTo(models.Materia, {
-        foreignKey: "Id_Materia",
+        foreignKey: "id_materia",
       });
     }
   }
   TutoresMaterias.init(
     {
-      Id_Tutor: {
+      id_tutor: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      Id_Materia: {
+      id_materia: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      Costo_Hora_Tutoria: {
+      costo_hora_tutoria: {
         type: DataTypes.FLOAT,
         allowNull: false,
       },
@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: "TutoresMaterias",
       tableName: "Tutores_Materias",
-      timestamps: false,
+      timestamps: true
     }
   );
   return TutoresMaterias;

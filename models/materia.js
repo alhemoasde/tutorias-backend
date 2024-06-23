@@ -5,28 +5,29 @@ module.exports = (sequelize, DataTypes) => {
   class Materia extends Model {
     static associate(models) {
       this.hasMany(models.TutoresMaterias, {
-        foreignKey: 'Id_Materia'
+        foreignKey: 'id_materia'
       });
       this.hasMany(models.Tutoria, {
-        foreignKey: 'Id_Materia'
+        foreignKey: 'id_materia'
       });
     }
   }
   Materia.init({
-    Id: {
+    id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
-    Nombre: {
+    nombre: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
-    Intensidad_Horaria: {
+    intensidad_horaria: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    Nivel_Educativo: {
+    nivel_educativo: {
       type: DataTypes.STRING,
       allowNull: false
     }
@@ -34,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Materia',
     tableName: 'Materias',
-    timestamps: false
+    timestamps: true
   });
   return Materia;
 };

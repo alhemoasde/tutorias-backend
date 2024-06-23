@@ -8,36 +8,37 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Archivo.init({
-    Id: {
+    id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
-    Entidad: {
+    entidad: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    Id_Entidad: {
+    id_entidad: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    Nombre: {
+    nombre: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    ContentType: {
+    contentType: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    Url: {
+    url: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true
     }
   }, {
     sequelize,
     modelName: 'Archivo',
     tableName: 'Archivos',
-    timestamps: false
+    timestamps: true
   });
   return Archivo;
 };

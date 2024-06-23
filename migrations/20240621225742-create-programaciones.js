@@ -2,35 +2,42 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("Programaciones", {
-      Id: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      Fecha: {
+      fecha: {
         type: Sequelize.DATE,
         allowNull: false,
       },
-      Hora_Inicio: {
+      hora_inicio: {
         type: Sequelize.TIME,
         allowNull: false,
       },
-      Hora_Fin: {
+      hora_fin: {
         type: Sequelize.TIME,
         allowNull: false,
       },
-      Id_Disponibilidad: {
+      id_disponibilidad: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: "Disponibilidades",
-          key: "Id",
+          key: "id",
         },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },
-      
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {

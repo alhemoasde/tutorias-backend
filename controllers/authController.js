@@ -23,7 +23,7 @@ exports.register = async (req, res) => {
     const user = await Usuario.create({
       username,
       password: hashedPassword,
-      activo: true // O el valor que consideres necesario
+      activo: true 
     });
 
     res.status(201).json({ message: 'Usuario registrado exitosamente' });

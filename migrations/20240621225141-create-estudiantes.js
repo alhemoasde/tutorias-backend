@@ -2,41 +2,51 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("Estudiantes", {
-      Id: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      Nombre: {
-        type: Sequelize.STRING,
+      nombre: {
+        type: Sequelize.STRING(100),
         allowNull: false,
       },
-      Apellido: {
-        type: Sequelize.STRING,
+      apellido: {
+        type: Sequelize.STRING(100),
         allowNull: false,
       },
-      Telefono: {
-        type: Sequelize.STRING,
+      telefono: {
+        type: Sequelize.STRING(15),
         allowNull: true,
+        unique: true,
       },
-      Email: {
-        type: Sequelize.STRING,
+      email: {
+        type: Sequelize.STRING(100),
         allowNull: false,
+        unique: true,
       },
-      Activo: {
+      activo: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
       },
-      Id_Usuario: {
+      id_usuario: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: "Usuarios",
-          key: "Id",
+          key: "id",
         },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
       },
     });
   },

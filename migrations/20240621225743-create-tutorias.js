@@ -2,69 +2,77 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("Tutorias", {
-      Id: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      Fecha_Solicitud: {
+      fecha_solicitud: {
         type: Sequelize.DATE,
         allowNull: false,
       },
-      Estado: {
-        type: Sequelize.STRING,
+      estado: {
+        type: Sequelize.STRING(50),
         allowNull: false,
       },
-      Id_Tutor: {
+      id_tutor: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: "Tutores",
-          key: "Id",
+          key: "id",
         },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },
-      Id_Estudiante: {
+      id_estudiante: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: "Estudiantes",
-          key: "Id",
+          key: "id",
         },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },
-      Id_Materia: {
+      id_materia: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: "Materias",
-          key: "Id",
+          key: "id",
         },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },
-      Id_Programacion: {
+      id_programacion: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: "Programaciones",
-          key: "Id",
+          key: "id",
         },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },
-      Id_Facturacion: {
+      id_facturacion: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: "Facturaciones",
-          key: "Id",
+          key: "id",
         },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
       },
     });
   },

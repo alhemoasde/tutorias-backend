@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.Disponibilidad, {
         foreignKey: "Id_Tutor",
       });
-      this.hasMany(models.Calificaciones_Tutores, {
+      this.hasMany(models.CalificacionesTutores, {
         foreignKey: "Id_Tutor",
       });
     }
@@ -59,7 +59,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: "Tutor",
       tableName: "Tutores",
-      timestamps: false,
+      timestamps: true,
     }
   );
   return Tutor;

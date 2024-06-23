@@ -2,24 +2,33 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("Materias", {
-      Id: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      Nombre: {
-        type: Sequelize.STRING,
+      nombre: {
+        type: Sequelize.STRING(100),
         allowNull: false,
+        unique: true,
       },
-      Intensidad_Horaria: {
+      intensidad_horaria: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      Nivel_Educativo: {
-        type: Sequelize.STRING,
+      nivel_educativo: {
+        type: Sequelize.STRING(50),
         allowNull: false,
       },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
     });
   },
   down: async (queryInterface, Sequelize) => {

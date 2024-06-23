@@ -8,24 +8,24 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Facturacion.init({
-    Id: {
+    id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
-    Fecha: {
+    fecha: {
       type: DataTypes.DATE,
       allowNull: false
     },
-    Horas_Tutoria: {
+    horas_tutoria: {
       type: DataTypes.FLOAT,
       allowNull: false
     },
-    Valor_Hora: {
+    valor_hora: {
       type: DataTypes.FLOAT,
       allowNull: false
     },
-    Valor_Total: {
+    valor_total: {
       type: DataTypes.FLOAT,
       allowNull: false
     }
@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Facturacion',
     tableName: 'Facturaciones',
-    timestamps: false
+    timestamps: true
   });
   return Facturacion;
 };

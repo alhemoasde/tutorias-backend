@@ -5,37 +5,37 @@ module.exports = (sequelize, DataTypes) => {
   class CalificacionesTutores extends Model {
     static associate(models) {
       this.belongsTo(models.Tutoria, {
-        foreignKey: "Id_Tutoria",
+        foreignKey: "id_tutoria",
       });
       this.belongsTo(models.Tutor, {
-        foreignKey: "Id_Tutor",
+        foreignKey: "id_tutor",
       });
     }
   }
   CalificacionesTutores.init(
     {
-      Id: {
+      id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
       },
-      Fecha: {
+      fecha: {
         type: DataTypes.DATE,
         allowNull: false,
       },
-      Calificacion: {
+      calificacion: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      Comentario: {
+      comentario: {
         type: DataTypes.TEXT,
         allowNull: true,
       },
-      Id_Tutoria: {
+      id_tutoria: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      Id_Tutor: {
+      id_tutor: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
@@ -44,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: "CalificacionesTutores",
       tableName: "Calificaciones_Tutores",
-      timestamps: false,
+      timestamps: true,
     }
   );
   return CalificacionesTutores;

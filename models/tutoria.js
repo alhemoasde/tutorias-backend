@@ -5,53 +5,53 @@ module.exports = (sequelize, DataTypes) => {
   class Tutoria extends Model {
     static associate(models) {
       this.belongsTo(models.Tutor, {
-        foreignKey: 'Id_Tutor'
+        foreignKey: 'id_tutor'
       });
       this.belongsTo(models.Estudiante, {
-        foreignKey: 'Id_Estudiante'
+        foreignKey: 'id_estudiante'
       });
       this.belongsTo(models.Materia, {
-        foreignKey: 'Id_Materia'
+        foreignKey: 'id_materia'
       });
       this.hasOne(models.Programacion, {
-        foreignKey: 'Id_Programacion'
+        foreignKey: 'id_programacion'
       });
       this.hasOne(models.Facturacion, {
-        foreignKey: 'Id_Facturacion'
+        foreignKey: 'id_facturacion'
       });
     }
   }
   Tutoria.init({
-    Id: {
+    id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
-    Fecha_Solicitud: {
+    fecha_solicitud: {
       type: DataTypes.DATE,
       allowNull: false
     },
-    Estado: {
+    estado: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    Id_Tutor: {
+    id_tutor: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    Id_Estudiante: {
+    id_estudiante: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    Id_Materia: {
+    id_materia: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    Id_Programacion: {
+    id_programacion: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    Id_Facturacion: {
+    id_facturacion: {
       type: DataTypes.INTEGER,
       allowNull: true
     }
@@ -59,7 +59,7 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Tutoria',
     tableName: 'Tutorias',
-    timestamps: false
+    timestamps: true
   });
   return Tutoria;
 };

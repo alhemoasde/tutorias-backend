@@ -2,45 +2,53 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("Soportes_Academicos", {
-      Id: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      Programa_Academico: {
-        type: Sequelize.STRING,
+      programa_academico: {
+        type: Sequelize.STRING(150),
         allowNull: false,
       },
-      Institucion_Educativa: {
-        type: Sequelize.STRING,
+      institucion_educativa: {
+        type: Sequelize.STRING(150),
         allowNull: false,
       },
-      Tpo_Programa: {
-        type: Sequelize.STRING,
+      tipo_programa: {
+        type: Sequelize.STRING(50),
         allowNull: false,
       },
-      Area_Estudio: {
-        type: Sequelize.STRING,
+      area_estudio: {
+        type: Sequelize.STRING(100),
         allowNull: true,
       },
-      Condicion: {
-        type: Sequelize.STRING,
+      condicion: {
+        type: Sequelize.STRING(50),
         allowNull: false,
       },
-      Soporte_Documental: {
-        type: Sequelize.STRING,
+      soporte_documental: {
+        type: Sequelize.STRING(50),
         allowNull: false,
       },
-      Id_Tutor: {
+      id_tutor: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: "Tutores",
-          key: "Id",
+          key: "id",
         },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
       },
     });
   },

@@ -2,31 +2,40 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("Archivos", {
-      Id: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      Entidad: {
-        type: Sequelize.STRING,
+      entidad: {
+        type: Sequelize.STRING(100),
         allowNull: false,
       },
-      Id_Entidad: {
+      id_entidad: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      Nombre: {
-        type: Sequelize.STRING,
+      nombre: {
+        type: Sequelize.STRING(255),
         allowNull: false,
       },
       ContentType: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(100),
         allowNull: false,
       },
       Url: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(255),
         allowNull: false,
+        unique: true,
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
       },
     });
   },

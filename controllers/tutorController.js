@@ -1,6 +1,5 @@
 const {
   Tutor,
-  NivelEducativo,
   Usuario,
   Disponibilidad,
   TutorMateria,
@@ -10,7 +9,6 @@ exports.getAllTutores = async (req, res) => {
   try {
     const tutores = await Tutor.findAll({
       include: [
-        { model: NivelEducativo },
         { model: Usuario },
         { model: Disponibilidad },
         { model: TutorMateria },

@@ -2,41 +2,41 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Tutores', {
-      Id: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      Nombre: {
+      nombre: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      Apellido: {
+      apellido: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      Telefono: {
+      telefono: {
         type: Sequelize.STRING,
         allowNull: true
       },
-      Email: {
+      email: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      Ciudad_Ubicacion: {
+      ciudad_ubicacion: {
         type: Sequelize.STRING,
         allowNull: true
       },
-      Activo: {
+      activo: {
         type: Sequelize.BOOLEAN,
         allowNull: false
       },
-      Nivel_Educativo: {
+      nivel_educativo: {
         type: Sequelize.STRING,
         allowNull: true
       },
-      Id_Usuario: {
+      id_usuario: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -45,6 +45,14 @@ module.exports = {
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
       }
     });
   },

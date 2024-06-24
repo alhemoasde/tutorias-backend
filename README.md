@@ -1,5 +1,11 @@
 # TalentoTech Proyecto Final.
 
+# Capa de Presistencia y Negocio del Sistema de Tutorias
+
+## Modelo Relacional ERD.
+
+![Texto alternativo](ERDDiagram.jpg)
+
 ## Requisitos Previos.
 
 1. Instalar Node.js y npm

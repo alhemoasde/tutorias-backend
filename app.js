@@ -9,6 +9,9 @@ const authMiddleware = require("./middleware/authMiddleware");
 const usuarioRoutes = require("./routes/usuarioRoutes");
 const rolRoutes = require("./routes/rolRoutes");
 const tutorRoutes = require("./routes/tutorRoutes");
+const estudiantesRoutes = require("./routes/estudiantesRoutes");
+const materiaRoutes = require("./routes/materiaRoutes");
+const disponibilidadRoutes = require("./routes/disponibilidadRoutes");
 
 // Middleware para parsear JSON
 app.use(express.json());
@@ -26,6 +29,10 @@ app.use(authMiddleware);
 app.use("/api/usuarios", usuarioRoutes);
 app.use("/api/roles", rolRoutes);
 app.use("/api/tutores", tutorRoutes);
+app.use("/api/materias", materiaRoutes);
+app.use("/api/disponibilidades", disponibilidadRoutes);
+app.use("/api/estudiantes", estudiantesRoutes);
+
 // otras rutas también se incluyen aquí
 
 const PORT = process.env.PORT || 3000;

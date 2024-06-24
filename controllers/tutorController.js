@@ -11,7 +11,7 @@ exports.getAllTutores = async (req, res) => {
       include: [
         { model: Usuario },
         { model: Disponibilidad },
-        { model: TutorMateria },
+        //{ model: TutorMateria },
       ],
     });
     res.json(tutores);

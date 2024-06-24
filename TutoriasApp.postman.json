@@ -7,6 +7,95 @@
 	},
 	"item": [
 		{
+			"name": "Acceso",
+			"item": [
+				{
+					"name": "TutoApp Registro User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"pm.environment.set(\"token\", response.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"prospecto\":{\r\n    \"nombre\": \"Carlos\",\r\n    \"apellido\": \"Duran\",\r\n    \"telefono\": \"3112356212\",\r\n    \"email\": \"makaplusa@gmail.com\",\r\n    \"ciudad_ubicacion\":null,\r\n    \"nivel_educativo\":null\r\n  },\r\n  \"password\": \"12345\",\r\n  \"codigo_rol\":\"ESTUDIANTE\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TutoApp Login User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"pm.environment.set(\"token\", response.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"alhemoasde@gmail.com\",\r\n  \"password\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Usuario",
 			"item": [
 				{
@@ -17,7 +106,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE4NTY2MTYyLCJleHAiOjE3MTg1Njk3NjJ9.LOcbKrW_jk8IDkuMJURnV01EzAYGEL-4PKFxRHeP_zo",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -25,12 +114,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/usuarios",
+							"raw": "localhost:3000/api/usuarios",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
+								"api",
 								"usuarios"
 							]
 						}
@@ -48,7 +138,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNzE4ODUyODAzLCJleHAiOjE3MTg4NTY0MDN9.Bsno74KlQj-90sRWXyv3zfJqBEoe3gUCtA3Q8HtLWYY",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -65,14 +155,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/usuarios/3",
+							"raw": "localhost:3000/api/usuarios/22",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
+								"api",
 								"usuarios",
-								"3"
+								"22"
 							]
 						}
 					},
@@ -86,7 +177,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNzE4ODUyODAzLCJleHAiOjE3MTg4NTY0MDN9.Bsno74KlQj-90sRWXyv3zfJqBEoe3gUCtA3Q8HtLWYY",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -94,14 +185,15 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/usuarios/1",
+							"raw": "localhost:3000/api/usuarios/20",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
+								"api",
 								"usuarios",
-								"1"
+								"20"
 							]
 						}
 					},
@@ -115,7 +207,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNzE4ODUyODAzLCJleHAiOjE3MTg4NTY0MDN9.Bsno74KlQj-90sRWXyv3zfJqBEoe3gUCtA3Q8HtLWYY",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -132,12 +224,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/usuarios/3",
+							"raw": "localhost:3000/api/usuarios/3",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
+								"api",
 								"usuarios",
 								"3"
 							]
@@ -158,7 +251,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE4NTY2MTYyLCJleHAiOjE3MTg1Njk3NjJ9.LOcbKrW_jk8IDkuMJURnV01EzAYGEL-4PKFxRHeP_zo",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -166,12 +259,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/roles",
+							"raw": "localhost:3000/api/roles",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
+								"api",
 								"roles"
 							]
 						}
@@ -189,7 +283,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNzE4ODUyODAzLCJleHAiOjE3MTg4NTY0MDN9.Bsno74KlQj-90sRWXyv3zfJqBEoe3gUCtA3Q8HtLWYY",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -206,14 +300,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/roles/1",
+							"raw": "localhost:3000/api/roles/admin",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
+								"api",
 								"roles",
-								"1"
+								"admin"
 							]
 						}
 					},
@@ -227,7 +322,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE4ODUyMDY2LCJleHAiOjE3MTg4NTU2NjZ9.rgTwcbDzK6JyitRP1cenPbMXNKCD3hhSRZpEzUeacpo",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -235,12 +330,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/roles/4",
+							"raw": "localhost:3000/api/roles/4",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
+								"api",
 								"roles",
 								"4"
 							]
@@ -256,7 +352,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNzE4ODUyODAzLCJleHAiOjE3MTg4NTY0MDN9.Bsno74KlQj-90sRWXyv3zfJqBEoe3gUCtA3Q8HtLWYY",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -273,12 +369,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/roles/1",
+							"raw": "localhost:3000/api/roles/1",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
+								"api",
 								"roles",
 								"1"
 							]
@@ -294,7 +391,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNzE4ODUyODAzLCJleHAiOjE3MTg4NTY0MDN9.Bsno74KlQj-90sRWXyv3zfJqBEoe3gUCtA3Q8HtLWYY",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -303,7 +400,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"descripcion\": \"BORRAR_APP\"\r\n}",
+							"raw": "{\r\n    \"Codigo\": \"ADMIN\",\r\n    \"Descripcion\": \"Rol especifico para el administrador del sistema.\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -311,12 +408,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/roles",
+							"raw": "localhost:3000/api/roles",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
+								"api",
 								"roles"
 							]
 						}
@@ -326,68 +424,58 @@
 			]
 		},
 		{
-			"name": "Login",
+			"name": "Tutor",
 			"item": [
 				{
-					"name": "TutoApp Registro User",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
+					"name": "Get Tutores",
 					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"username\": \"estudiante1\",\r\n  \"password\": \"12345\",\r\n  \"rol\":[3]\r\n}\r\n",
-							"options": {
-								"raw": {
-									"language": "json"
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
 								}
-							}
+							]
 						},
+						"method": "GET",
+						"header": [],
 						"url": {
-							"raw": "localhost:3000/auth/register",
+							"raw": "localhost:3000/api/tutores",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"auth",
-								"register"
+								"api",
+								"tutores"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "TutoApp Login User",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
+					"name": "Get Tutor",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "POST",
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"username\": \"estudiante1\",\r\n  \"password\": \"12345\"\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -395,14 +483,609 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/auth/login",
+							"raw": "localhost:3000/api/tutores/1",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"auth",
-								"login"
+								"api",
+								"tutores",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Tutor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/tutores/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"tutores",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put Tutor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"nombre\",\r\n    \"apellido\": \"apellido\",\r\n    \"telefono\": \"telefono\",\r\n    \"email\": \"email\",\r\n    \"ciudad_ubicacion\": \"ciudad_ubicacion\",\r\n    \"nivel_educativo\": \"nivel_educativo\",\r\n    \"activo\": true,\r\n    \"id_usuario\": 21\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/tutores/perfil/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"tutores",
+								"perfil",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Materia",
+			"item": [
+				{
+					"name": "Get Materia",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/materias",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"materias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Materia",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/materias/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"materias",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Materia",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/materias/4",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"materias",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put Materia",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"ALL\",\r\n    \"intensidad_horaria\":4,\r\n    \"nivel_educativo\": \"Primaria\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/materias/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"materias",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Materia",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"ALL\",\r\n    \"intensidad_horaria\":40,\r\n    \"nivel_educativo\": \"Primaria\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/materias",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"materias"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Disponibilidad",
+			"item": [
+				{
+					"name": "Get DisponibilidadesTutor",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_tutor\": 1,\r\n    \"fecha\": \"2024/06/23\",\r\n    \"hora_inicio\": \"09:00\",\r\n    \"hora_fin\": \"14:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/disponibilidades",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"disponibilidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Disponibilidad",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/disponibilidades/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"disponibilidades",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Disponibilidad",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/disponibilidades/4",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"disponibilidades",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put Disponibilidad",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_tutor\": 1,\r\n    \"tipo_sesion\": \"Virtual\",\r\n    \"fecha\": \"2024/06/23\",\r\n    \"hora_inicio\": \"09:00\",\r\n    \"hora_fin\": \"14:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/disponibilidades/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"disponibilidades",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Disponibilidad",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tipo_sesion\": \"Virtual\",\r\n    \"fecha\": \"2024/06/23\",\r\n    \"hora_inicio\": \"09:00\",\r\n    \"hora_fin\": \"14:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/disponibilidades",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"disponibilidades"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Estudiante",
+			"item": [
+				{
+					"name": "Get Estudiantes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/estudiantes",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"estudiantes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Estudiante",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/estudiantes/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"estudiantes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Estudiante",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/estudiantes/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"estudiantes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put Estudiante",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"nombre\",\r\n    \"apellido\": \"apellido\",\r\n    \"telefono\": \"telefono\",\r\n    \"email\": \"email\",\r\n    \"ciudad_ubicacion\": \"ciudad_ubicacion\",\r\n    \"nivel_educativo\": \"nivel_educativo\",\r\n    \"activo\": true,\r\n    \"id_usuario\": 21\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/estudiantes/perfil/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"estudiantes",
+								"perfil",
+								"1"
 							]
 						}
 					},

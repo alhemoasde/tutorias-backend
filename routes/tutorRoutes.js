@@ -6,27 +6,27 @@ const authorizeMiddleware = require("../middleware/authorizeMiddleware");
 
 router.get(
   "/",
-  [authMiddleware, authorizeMiddleware("ADMIN", "ESTUDIANTE")],
+  [authMiddleware, authorizeMiddleware(["ADMIN", "ESTUDIANTE"])],
   tutorController.getAllTutores
 );
 router.get(
   "/:id",
-  [authMiddleware, authorizeMiddleware("ADMIN")],
+  [authMiddleware, authorizeMiddleware(["ADMIN"])],
   tutorController.getTutorById
 );
 router.post(
   "/",
-  [authMiddleware, authorizeMiddleware("ADMIN")],
+  [authMiddleware, authorizeMiddleware(["ADMIN"])],
   tutorController.createTutor
 );
 router.put(
   "perfil/:id",
-  [authMiddleware, authorizeMiddleware("ADMIN", "TUTOR")],
+  [authMiddleware, authorizeMiddleware(["ADMIN", "TUTOR"])],
   tutorController.updateTutor
 );
 router.delete(
   "/:id",
-  [authMiddleware, authorizeMiddleware("ADMIN", "TUTOR")],
+  [authMiddleware, authorizeMiddleware(["ADMIN", "TUTOR"])],
   tutorController.deleteTutor
 );
 

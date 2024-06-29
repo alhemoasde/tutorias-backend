@@ -6,27 +6,27 @@ const authorizeMiddleware = require("../middleware/authorizeMiddleware");
 
 router.get(
   "/",
-  [authMiddleware, authorizeMiddleware("ADMIN")],
+  [authMiddleware, authorizeMiddleware(["ADMIN"])],
   usuarioController.getAllUsuarios
 );
 router.get(
   "/:id",
-  [authMiddleware, authorizeMiddleware("ADMIN")],
+  [authMiddleware, authorizeMiddleware(["ADMIN"])],
   usuarioController.getUsuarioById
 );
 router.post(
   "/",
-  [authMiddleware, authorizeMiddleware("ADMIN")],
+  [authMiddleware, authorizeMiddleware(["ADMIN"])],
   usuarioController.createUsuario
 );
 router.put(
   "/:id",
-  [authMiddleware, authorizeMiddleware("ADMIN")],
+  [authMiddleware, authorizeMiddleware(["ADMIN"])],
   usuarioController.updateUsuario
 );
 router.delete(
   "/:id",
-  [authMiddleware, authorizeMiddleware("ADMIN")],
+  [authMiddleware, authorizeMiddleware(["ADMIN"])],
   usuarioController.deleteUsuario
 );
 

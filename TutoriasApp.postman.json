@@ -775,7 +775,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id_tutor\": 1,\r\n    \"fecha\": \"2024/06/23\",\r\n    \"hora_inicio\": \"09:00\",\r\n    \"hora_fin\": \"14:00\"\r\n}",
+							"raw": "{\r\n    \"id_tutor\": 14,\r\n    \"tipo_sesion\": \"Virtual\",\r\n    \"fecha\": \"2024/07/01\",\r\n    \"hora_inicio\": \"09:00\",\r\n    \"hora_fin\": \"23:00\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -797,7 +797,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Disponibilidad",
+					"name": "Get DisponibilidadTutor",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -824,7 +824,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/disponibilidades/1",
+							"raw": "localhost:3000/api/disponibilidades/5",
 							"host": [
 								"localhost"
 							],
@@ -832,7 +832,7 @@
 							"path": [
 								"api",
 								"disponibilidades",
-								"1"
+								"5"
 							]
 						}
 					},
@@ -854,7 +854,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/disponibilidades/4",
+							"raw": "localhost:3000/api/disponibilidades/7",
 							"host": [
 								"localhost"
 							],
@@ -862,14 +862,14 @@
 							"path": [
 								"api",
 								"disponibilidades",
-								"4"
+								"7"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Put Disponibilidad",
+					"name": "Put DisponibilidadTutor",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -885,7 +885,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id_tutor\": 1,\r\n    \"tipo_sesion\": \"Virtual\",\r\n    \"fecha\": \"2024/06/23\",\r\n    \"hora_inicio\": \"09:00\",\r\n    \"hora_fin\": \"14:00\"\r\n}",
+							"raw": "{\r\n    \"id_tutor\": 14,\r\n    \"tipo_sesion\": \"Presencial-Borrar\",\r\n    \"fecha\": \"2024/07/08\",\r\n    \"hora_inicio\": \"07:00\",\r\n    \"hora_fin\": \"9:00\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -893,7 +893,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/disponibilidades/1",
+							"raw": "localhost:3000/api/disponibilidades/5",
 							"host": [
 								"localhost"
 							],
@@ -901,14 +901,14 @@
 							"path": [
 								"api",
 								"disponibilidades",
-								"1"
+								"5"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Post Disponibilidad",
+					"name": "Post DisponibilidadTutor",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -924,7 +924,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"tipo_sesion\": \"Virtual\",\r\n    \"fecha\": \"2024/06/23\",\r\n    \"hora_inicio\": \"09:00\",\r\n    \"hora_fin\": \"14:00\"\r\n}",
+							"raw": "{\r\n    \"id_tutor\": 14,\r\n    \"tipo_sesion\": \"Borrar\",\r\n    \"fecha\": \"2024-07-07\",\r\n    \"hora_inicio\": \"14:00\",\r\n    \"hora_fin\": \"20:00\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

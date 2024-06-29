@@ -30,6 +30,7 @@ exports.register = async (req, res) => {
 
     if (codigo_rol.toUpperCase() === ROL_TUTOR) {
       if (!prospecto.ciudad_ubicacion || !prospecto.nivel_educativo) {
+        await user.destroy();
         return res
           .status(400)
           .json({ error: "Faltan campos requeridos del Tutor" });
@@ -56,6 +57,7 @@ exports.register = async (req, res) => {
         id_usuario: user.id,
       });
     } else {
+      await user.destroy();
       return res
         .status(400)
         .json({ error: "Rol no valido para registrar el usuario." });
@@ -124,19 +126,19 @@ const generarUser = async (username, password) => {
   const existingUser = await Usuario.findOne({ where: { username } });
   if (existingUser) {
     return null;
+  } else {
+    // Hash de la contraseña
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Crear nuevo usuario
+    const user = await Usuario.create({
+      username,
+      password: hashedPassword,
+      activo: true,
+    });
+
+    return user;
   }
-
-  // Hash de la contraseña
-  const hashedPassword = await bcrypt.hash(password, 10);
-
-  // Crear nuevo usuario
-  const user = await Usuario.create({
-    username,
-    password: hashedPassword,
-    activo: true,
-  });
-
-  return user;
 };
 
 const getRolesUser = async (user) => {

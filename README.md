@@ -98,6 +98,12 @@ DB_PASS=s1mpl3
 const JWT_SECRET = process.env.JWT_SECRET;
 ```
 
+8. Instalar `date-fns` para el manejo de fechas.
+
+```bash
+npm install date-fns
+```
+
 `Nota:` No es necesario instalar una a una cada dependencia, solo debe ejecutar:
 
 ```bash

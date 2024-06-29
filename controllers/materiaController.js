@@ -73,7 +73,7 @@ exports.updateMateria = async (req, res) => {
       return res.status(404).json({ error: "Materia no encontrada" });
     }
     await materia.update(req.body);
-    res.json({ materia, message: "Materia creada exitosamente." });
+    res.json({ materia, message: "Materia actualizada exitosamente." });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

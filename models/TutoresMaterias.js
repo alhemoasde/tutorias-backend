@@ -14,6 +14,11 @@ module.exports = (sequelize, DataTypes) => {
   }
   TutoresMaterias.init(
     {
+      id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+      },
       id_tutor: {
         type: DataTypes.INTEGER,
         allowNull: false,

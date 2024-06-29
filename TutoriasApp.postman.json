@@ -29,7 +29,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"prospecto\":{\r\n    \"nombre\": \"Carlos\",\r\n    \"apellido\": \"Duran\",\r\n    \"telefono\": \"3112356212\",\r\n    \"email\": \"makaplusa@gmail.com\",\r\n    \"ciudad_ubicacion\":null,\r\n    \"nivel_educativo\":null\r\n  },\r\n  \"password\": \"12345\",\r\n  \"codigo_rol\":\"ESTUDIANTE\"\r\n}\r\n",
+							"raw": "{\r\n  \"prospecto\":{\r\n    \"nombre\": \"Davi Santiago\",\r\n    \"apellido\": \"Herrera Molina\",\r\n    \"telefono\": \"3125264519\",\r\n    \"email\": \"dani2024@gmail.com\",\r\n    \"ciudad_ubicacion\":\"Bogotá Dc\",\r\n    \"nivel_educativo\":\"Posgrado\"\r\n  },\r\n  \"password\": \"12345\",\r\n  \"codigo_rol\":\"TUTOR\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -71,7 +71,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"username\": \"alhemoasde@gmail.com\",\r\n  \"password\": \"12345\"\r\n}",
+							"raw": "{\r\n  \"username\": \"dani2024@gmail.com\",\r\n  \"password\": \"12345\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -629,7 +629,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/materias/1",
+							"raw": "localhost:3000/api/materias/7",
 							"host": [
 								"localhost"
 							],
@@ -637,7 +637,7 @@
 							"path": [
 								"api",
 								"materias",
-								"1"
+								"7"
 							]
 						}
 					},
@@ -690,7 +690,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"ALL\",\r\n    \"intensidad_horaria\":4,\r\n    \"nivel_educativo\": \"Primaria\"\r\n}",
+							"raw": "{\r\n    \"nombre\": \"Java - Basic\",\r\n    \"intensidad_horaria\":30,\r\n    \"nivel_educativo\": \"Bachillerato\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -698,7 +698,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/materias/1",
+							"raw": "localhost:3000/api/materias/7",
 							"host": [
 								"localhost"
 							],
@@ -706,7 +706,7 @@
 							"path": [
 								"api",
 								"materias",
-								"1"
+								"7"
 							]
 						}
 					},
@@ -729,7 +729,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"ALL\",\r\n    \"intensidad_horaria\":40,\r\n    \"nivel_educativo\": \"Primaria\"\r\n}",
+							"raw": "{\r\n    \"nombre\": \"Java - Avanzado\",\r\n    \"intensidad_horaria\":45,\r\n    \"nivel_educativo\": \"Técnico\",\r\n    \"id_tutor\": 14,\r\n    \"costo_hora_tutoria\":85000\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

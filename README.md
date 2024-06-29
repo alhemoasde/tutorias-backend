@@ -111,3 +111,4 @@ npm install
 ```
 
 ## Autores.
+- [Alejandro Herrera Montilla @alhemoasde](https://www.linkedin.com/in/alhemoasde) Backend Developer

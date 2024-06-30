@@ -38,7 +38,12 @@ app.use("/api/estudiantes", estudiantesRoutes);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor iniciado por el puerto ${PORT}`);
+  console.log(`Running in JWT_SECRET ${process.env.JWT_SECRET}`);
   console.log(`Running in ${process.env.NODE_ENV} mode`);
+  console.log(`Running in DB_NAME ${process.env.DB_NAME}`);
+  console.log(`Running in DB_HOST ${process.env.DB_HOST}`);
+  console.log(`Running in DB_PORT ${process.env.DB_PORT}`);
+  console.log(`Running in DB_PORT ${process.env.DB_USER}`);
 });
 
 module.exports = app;

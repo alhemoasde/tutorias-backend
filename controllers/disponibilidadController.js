@@ -1,5 +1,5 @@
 const { Tutor, Programacion, Disponibilidad } = require("../models");
-const sequelize = require("../config/config.json");
+const sequelize = require("../config/config.js");
 const { Op } = require("sequelize");
 const { format, parseISO } = require("date-fns");
 

@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         otherKey: "codigo_rol",
       });
       this.hasOne(models.Estudiante, {
-        foreignKey: "id_Usuario",
+        foreignKey: "id_usuario",
       });
       this.hasOne(models.Tutor, {
         foreignKey: "id_usuario",

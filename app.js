@@ -1,5 +1,5 @@
-const express = require("express");
 require("dotenv").config();
+const express = require("express");
 const cors = require("cors");
 const app = express();
 
@@ -38,6 +38,7 @@ app.use("/api/estudiantes", estudiantesRoutes);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor iniciado por el puerto ${PORT}`);
+  console.log(`Running in ${process.env.NODE_ENV} mode`);
 });
 
 module.exports = app;

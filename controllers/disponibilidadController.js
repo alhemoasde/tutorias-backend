@@ -62,8 +62,9 @@ exports.getDisponibilidadById = async (req, res) => {
     });
     if (!disponibilidad) {
       return res.status(404).json({ error: "Disponibilidad no encontrada." });
+    } else {
+      res.status(200).json({ disponibilidad });
     }
-    res.status(200).json({ disponibilidad });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

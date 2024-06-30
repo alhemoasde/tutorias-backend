@@ -5,7 +5,13 @@ exports.getAllMatarias = async (req, res) => {
     const materias = await Materia.findAll({
       include: [{ model: TutoresMaterias }],
     });
-    res.json(materias);
+    if (materias.length === 0) {
+      res.status(404).json({
+        error: "No existen materias con los criterios consultados.",
+      });
+    } else {
+      res.status(200).json({ materias });
+    }
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -18,8 +24,9 @@ exports.getMateriaById = async (req, res) => {
     });
     if (!materia) {
       return res.status(404).json({ error: "Materia no encontrada." });
+    } else {
+      res.status(200).json({ materia });
     }
-    res.json(materia);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

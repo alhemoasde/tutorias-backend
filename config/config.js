@@ -5,14 +5,6 @@ module.exports = {
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
     dialect: "mysql",
-    dialectModule: require("mysql2"),
-    pluginData: "mysql_native_password",
-    dialectOptions: {
-      authPlugins: {
-        caching_sha2_password: false,
-        mysql_native_password: true,
-      },
-    },
   },
   test: {
     username: "root",
@@ -20,14 +12,6 @@ module.exports = {
     database: "database_test",
     host: "127.0.0.1",
     dialect: "mysql",
-    dialectModule: require("mysql2"),
-    pluginData: "mysql_native_password",
-    dialectOptions: {
-      authPlugins: {
-        caching_sha2_password: false,
-        mysql_native_password: true,
-      },
-    },
   },
   production: {
     username: process.env.DB_USER,
@@ -35,13 +19,5 @@ module.exports = {
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
     dialect: "mysql",
-    dialectModule: require("mysql2"),
-    pluginData: "mysql_native_password",
-    dialectOptions: {
-      authPlugins: {
-        caching_sha2_password: false,
-        mysql_native_password: true,
-      },
-    },
   },
 };

@@ -6,6 +6,12 @@ const { Usuario } = require("../models");
 const JWT_SECRET = process.env.JWT_SECRET;
 
 const authMiddleware = async (req, res, next) => {
+
+  // Verificar si la ruta es pública
+  if (req.path === '/api/auth/login' || req.path === '/api/auth/register') {
+    return next(); // Si es pública, pasar al siguiente middleware
+  }
+
   const authHeader = req.headers.authorization;
 
   if (!authHeader) {

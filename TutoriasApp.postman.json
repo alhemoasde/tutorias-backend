@@ -29,7 +29,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"prospecto\":{\r\n    \"nombre\": \"Davi Santiago\",\r\n    \"apellido\": \"Herrera Molina\",\r\n    \"telefono\": \"3125264519\",\r\n    \"email\": \"dani2024@gmail.com\",\r\n    \"ciudad_ubicacion\":\"Bogotá Dc\",\r\n    \"nivel_educativo\":\"Posgrado\"\r\n  },\r\n  \"password\": \"12345\",\r\n  \"codigo_rol\":\"TUTOR\"\r\n}\r\n",
+							"raw": "{\r\n  \"prospecto\":{\r\n    \"nombre\": \"Ana Milena\",\r\n    \"apellido\": \"Diaz Garcia\",\r\n    \"telefono\": \"3201593526\",\r\n    \"email\": \"anami@gmail.com\",\r\n    \"ciudad_ubicacion\":\"Bogotá Dc\",\r\n    \"nivel_educativo\":\"Pregrado\"\r\n  },\r\n  \"password\": \"12345\",\r\n  \"codigo_rol\":\"TUTOR\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -37,11 +37,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/auth/register",
+							"raw": "{{server}}/api/auth/register",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"auth",
@@ -71,7 +70,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"username\": \"dani2024@gmail.com\",\r\n  \"password\": \"12345\"\r\n}",
+							"raw": "{\r\n  \"username\": \"alhemoasde@gmail.com\",\r\n  \"password\": \"12345\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -79,11 +78,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/auth/login",
+							"raw": "{{server}}/api/auth/login",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"auth",
@@ -114,11 +112,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/usuarios",
+							"raw": "{{server}}/api/usuarios",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"usuarios"
@@ -155,11 +152,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/usuarios/22",
+							"raw": "{{server}}/api/usuarios/22",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"usuarios",
@@ -185,11 +181,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/usuarios/20",
+							"raw": "{{server}}/api/usuarios/20",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"usuarios",
@@ -224,11 +219,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/usuarios/3",
+							"raw": "{{server}}/api/usuarios/3",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"usuarios",
@@ -259,11 +253,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/roles",
+							"raw": "{{server}}/api/roles",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"roles"
@@ -300,11 +293,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/roles/admin",
+							"raw": "{{server}}/api/roles/admin",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"roles",
@@ -330,11 +322,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/roles/4",
+							"raw": "{{server}}/api/roles/4",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"roles",
@@ -369,11 +360,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/roles/1",
+							"raw": "{{server}}/api/roles/1",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"roles",
@@ -408,11 +398,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/roles",
+							"raw": "{{server}}/api/roles",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"roles"
@@ -442,11 +431,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/tutores",
+							"raw": "{{server}}/api/tutores",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"tutores"
@@ -483,11 +471,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/tutores/1",
+							"raw": "{{server}}/api/tutores/1",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"tutores",
@@ -513,11 +500,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/tutores/1",
+							"raw": "{{server}}/api/tutores/1",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"tutores",
@@ -552,11 +538,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/tutores/perfil/1",
+							"raw": "{{server}}/api/tutores/perfil/1",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"tutores",
@@ -573,7 +558,7 @@
 			"name": "Materia",
 			"item": [
 				{
-					"name": "Get Materia",
+					"name": "Get Materias",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -588,11 +573,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/materias",
+							"raw": "{{server}}/api/materias",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"materias"
@@ -629,11 +613,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/materias/7",
+							"raw": "{{server}}/api/materias/7",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"materias",
@@ -659,11 +642,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/materias/4",
+							"raw": "{{server}}/api/materias/4",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"materias",
@@ -698,11 +680,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/materias/7",
+							"raw": "{{server}}/api/materias/7",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"materias",
@@ -729,7 +710,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Java - Avanzado\",\r\n    \"intensidad_horaria\":45,\r\n    \"nivel_educativo\": \"Técnico\",\r\n    \"id_tutor\": 14,\r\n    \"costo_hora_tutoria\":85000\r\n}",
+							"raw": "{\r\n    \"nombre\": \"Java - Expert\",\r\n    \"intensidad_horaria\":80,\r\n    \"nivel_educativo\": \"Pregrado\",\r\n    \"id_tutor\": 3,\r\n    \"costo_hora_tutoria\":150000\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -737,11 +718,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/materias",
+							"raw": "{{server}}/api/materias",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"materias"
@@ -783,11 +763,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/disponibilidades",
+							"raw": "{{server}}/api/disponibilidades",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"disponibilidades"
@@ -824,11 +803,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/disponibilidades/5",
+							"raw": "{{server}}/api/disponibilidades/5",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"disponibilidades",
@@ -854,11 +832,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/disponibilidades/7",
+							"raw": "{{server}}/api/disponibilidades/7",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"disponibilidades",
@@ -893,11 +870,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/disponibilidades/5",
+							"raw": "{{server}}/api/disponibilidades/5",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"disponibilidades",
@@ -932,11 +908,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/disponibilidades",
+							"raw": "{{server}}/api/disponibilidades",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"disponibilidades"
@@ -966,11 +941,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/estudiantes",
+							"raw": "{{server}}/api/estudiantes",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"estudiantes"
@@ -1007,11 +981,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/estudiantes/1",
+							"raw": "{{server}}/api/estudiantes/1",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"estudiantes",
@@ -1037,11 +1010,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/estudiantes/1",
+							"raw": "{{server}}/api/estudiantes/1",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"estudiantes",
@@ -1076,15 +1048,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/estudiantes/perfil/1",
+							"raw": "{{server}}/api/estudiantes/1",
 							"host": [
-								"localhost"
+								"{{server}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"estudiantes",
-								"perfil",
 								"1"
 							]
 						}

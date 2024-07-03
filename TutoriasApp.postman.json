@@ -29,7 +29,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"prospecto\":{\r\n    \"nombre\": \"Ana Milena\",\r\n    \"apellido\": \"Diaz Garcia\",\r\n    \"telefono\": \"3201593526\",\r\n    \"email\": \"anami@gmail.com\",\r\n    \"ciudad_ubicacion\":\"Bogotá Dc\",\r\n    \"nivel_educativo\":\"Pregrado\"\r\n  },\r\n  \"password\": \"12345\",\r\n  \"codigo_rol\":\"TUTOR\"\r\n}\r\n",
+							"raw": "{\r\n  \"prospecto\":{\r\n    \"nombre\": \"Pepito\",\r\n    \"apellido\": \"Perez\",\r\n    \"telefono\": \"3124521697\",\r\n    \"email\": \"pepeperez@gmail.com\",\r\n    \"ciudad_ubicacion\":\"Bogotá\",\r\n    \"nivel_educativo\":\"Técnico\"\r\n  },\r\n  \"password\": \"12345\",\r\n  \"codigo_rol\":\"ESTUDIANTE\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -45,6 +45,47 @@
 								"api",
 								"auth",
 								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TutoApp Registro User Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"pm.environment.set(\"token\", response.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"prospecto\":{\r\n    \"nombre\": \"Agil\",\r\n    \"apellido\": \"Group Dev\",\r\n    \"telefono\": \"320000000\",\r\n    \"email\": \"agilgroupdev@gmail.com\",\r\n    \"ciudad_ubicacion\":\"Bogotá Dc\",\r\n    \"nivel_educativo\":\"Magistier\"\r\n  },\r\n  \"password\": \"12345\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/api/auth/register-admin",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register-admin"
 							]
 						}
 					},
@@ -70,7 +111,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"username\": \"alhemoasde@gmail.com\",\r\n  \"password\": \"12345\"\r\n}",
+							"raw": "{\r\n  \"username\": \"agilgroupdev@gmail.com\",\r\n  \"password\": \"12345\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -211,7 +252,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 3,\r\n    \"username\": \"tutorMax\",\r\n    \"activo\": true\r\n}",
+							"raw": "{\r\n    \"user_name\":\"xxxxx@gmail.com\",\r\n    \"activo\":false\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -219,14 +260,53 @@
 							}
 						},
 						"url": {
-							"raw": "{{server}}/api/usuarios/3",
+							"raw": "{{server}}/api/usuarios/4",
 							"host": [
 								"{{server}}"
 							],
 							"path": [
 								"api",
 								"usuarios",
-								"3"
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put Usuario Role",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigo_rol\":\"ADMIN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/api/usuarios/role-update/4",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"role-update",
+								"4"
 							]
 						}
 					},
@@ -710,7 +790,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Java - Expert\",\r\n    \"intensidad_horaria\":80,\r\n    \"nivel_educativo\": \"Pregrado\",\r\n    \"id_tutor\": 3,\r\n    \"costo_hora_tutoria\":150000\r\n}",
+							"raw": "{\r\n    \"nombre\": \"React - Basic\",\r\n    \"intensidad_horaria\":80,\r\n    \"nivel_educativo\": \"Técnico\",\r\n    \"id_tutor\": 2,\r\n    \"costo_hora_tutoria\":150000\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

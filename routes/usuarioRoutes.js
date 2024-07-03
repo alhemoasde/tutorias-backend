@@ -30,4 +30,10 @@ router.delete(
   usuarioController.deleteUsuario
 );
 
+router.put(
+  "/role-update/:id",
+  [authMiddleware, authorizeMiddleware(["ADMIN"])],
+  usuarioController.updateUsuarioRole
+);
+
 module.exports = router;

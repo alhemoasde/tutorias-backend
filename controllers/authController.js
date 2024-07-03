@@ -1,11 +1,13 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { getRolesUser } = require("./utils/userRolesUtils");
 const { Usuario, Tutor, Estudiante, UsuarioRoles } = require("../models");
 
 // Clave secreta para JWT
 const JWT_SECRET = process.env.JWT_SECRET;
 const ROL_TUTOR = "TUTOR";
 const ROL_ESTUDIANTE = "ESTUDIANTE";
+const ROL_ADMIN = "ADMIN";
 
 // Registro de usuario
 exports.register = async (req, res) => {
@@ -160,18 +162,55 @@ const generarUser = async (username, password) => {
   }
 };
 
-const getRolesUser = async (user) => {
-  const userRoles = await UsuarioRoles.findAll({
-    where: { id_usuario: user.id },
-    attributes: ["codigo_rol"],
-  });
+// Registro de usuario
+exports.registerAdmin = async (req, res) => {
+  const { prospecto, password } = req.body;
 
-  const roles = [];
+  try {
+    if (!prospecto || !password) {
+      return res.status(400).json({ error: "Todos los campos son requeridos" });
+    }
 
-  // Iterar sobre cada objeto userRoles y agregar cada codigo_rol al array roles
-  userRoles.forEach((role) => {
-    roles.push(role.codigo_rol);
-  });
+    const user = await generarUser(prospecto.email, password);
+    if (!user) {
+      return res.status(400).json({ error: "El usuario ya existe" });
+    }
 
-  return roles;
+    // Asignar roles al usuario
+    await UsuarioRoles.create({
+      id_usuario: user.id,
+      codigo_rol: ROL_ADMIN,
+    });
+
+    let persona = null;
+
+    // Crear nuevo Admin
+    persona = await Tutor.create({
+      nombre: prospecto.nombre,
+      apellido: prospecto.apellido,
+      telefono: prospecto.telefono,
+      email: prospecto.email.toLowerCase(),
+      ciudad_ubicacion: prospecto.ciudad_ubicacion,
+      nivel_educativo: prospecto.nivel_educativo,
+      activo: true,
+      id_usuario: user.id,
+    });
+
+    // Generar token
+    const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: "1h" });
+
+    res.status(201).json({
+      token: token,
+      userResponse: {
+        id: user.id,
+        username: user.username,
+        persona: persona,
+        roles: await getRolesUser(user),
+      },
+      message: "Usuario Admin registrado exitosamente",
+    });
+  } catch (error) {
+    await user.destroy();
+    res.status(500).json({ error: error.message });
+  }
 };

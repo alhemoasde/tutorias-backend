@@ -10,7 +10,6 @@ const ROL_ESTUDIANTE = "ESTUDIANTE";
 // Registro de usuario
 exports.register = async (req, res) => {
   const { prospecto, password, codigo_rol } = req.body;
-  let roles = [];
 
   try {
     if (!prospecto || !password || !codigo_rol) {
@@ -28,6 +27,8 @@ exports.register = async (req, res) => {
       codigo_rol: codigo_rol,
     });
 
+    let persona = null;
+
     if (codigo_rol.toUpperCase() === ROL_TUTOR) {
       if (!prospecto.ciudad_ubicacion || !prospecto.nivel_educativo) {
         await user.destroy();
@@ -36,7 +37,7 @@ exports.register = async (req, res) => {
           .json({ error: "Faltan campos requeridos del Tutor" });
       }
       // Crear nuevo Tutor
-      const tutor = await Tutor.create({
+      persona = await Tutor.create({
         nombre: prospecto.nombre,
         apellido: prospecto.apellido,
         telefono: prospecto.telefono,
@@ -48,7 +49,7 @@ exports.register = async (req, res) => {
       });
     } else if (codigo_rol.toUpperCase() === ROL_ESTUDIANTE) {
       // Crear nuevo Estudiante
-      const estudiante = await Estudiante.create({
+      persona = await Estudiante.create({
         nombre: prospecto.nombre,
         apellido: prospecto.apellido,
         telefono: prospecto.telefono,
@@ -60,7 +61,7 @@ exports.register = async (req, res) => {
       await user.destroy();
       return res
         .status(400)
-        .json({ error: "Rol no valido para registrar el usuario." });
+        .json({ error: "Rol no válido para registrar el usuario." });
     }
 
     // Generar token
@@ -71,11 +72,13 @@ exports.register = async (req, res) => {
       userResponse: {
         id: user.id,
         username: user.username,
+        persona: persona,
         roles: await getRolesUser(user),
       },
       message: "Usuario registrado exitosamente",
     });
   } catch (error) {
+    await user.destroy();
     res.status(500).json({ error: error.message });
   }
 };
@@ -86,7 +89,19 @@ exports.login = async (req, res) => {
 
   try {
     // Verificar si el usuario existe
-    const user = await Usuario.findOne({ where: { username } });
+    const user = await Usuario.findOne({
+      where: { username },
+      include: [
+        {
+          model: Estudiante,
+          as: "Estudiante",
+        },
+        {
+          model: Tutor,
+          as: "Tutor",
+        },
+      ],
+    });
 
     if (!user) {
       return res
@@ -105,11 +120,15 @@ exports.login = async (req, res) => {
     // Generar token
     const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: "1h" });
 
+    // Asignar la persona vinculada al usuario (Estudiante o Tutor)
+    let persona = user.Estudiante ? user.Estudiante : user.Tutor;
+
     res.status(200).json({
       token: token,
       userResponse: {
         id: user.id,
         username: user.username,
+        persona: persona,
         roles: await getRolesUser(user),
       },
       message: "Inicio de sesión exitoso",

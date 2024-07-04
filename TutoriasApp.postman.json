@@ -496,6 +496,337 @@
 			"name": "Tutor",
 			"item": [
 				{
+					"name": "Calificaciones",
+					"item": [
+						{
+							"name": "Get Calificaciones",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/api/calificacionesTutores/4",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"calificacionesTutores",
+										"4"
+									]
+								},
+								"description": "El Parametro a enviar es el **ID** del Tutor (id_tutor)."
+							},
+							"response": []
+						},
+						{
+							"name": "Get Calificacion",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/calificacionesTutores/1",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"calificacionesTutores",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Put Calificacion",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"calificacion\": 1,\r\n    \"comentario\": \"No preparo la tematica a tratar.\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/calificacionesTutores/1",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"calificacionesTutores",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post Calificacion",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id_tutoria\":1,\r\n    \"id_tutor\":2,\r\n    \"calificacion\": 5,\r\n    \"comentario\": \"Excelente servicio, muy profesional.\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/calificacionesTutores",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"calificacionesTutores"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "SoportesAcademicos",
+					"item": [
+						{
+							"name": "Get SoportesAcademicos",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/api/soportesAcademicos/4",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"soportesAcademicos",
+										"4"
+									]
+								},
+								"description": "El Parametro a enviar es el **ID** del Tutor (id_tutor)."
+							},
+							"response": []
+						},
+						{
+							"name": "Get SoportesAcademicos",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/soportesAcademicos/1",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"soportesAcademicos",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Put SoportesAcademicos",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"programa_academico\": \"Ingenieria de Sistemas\",\r\n    \"institucion_educativa\": \"Universidad Nasional de Colombia\",\r\n    \"tipo_programa\":\"Pregrado\",\r\n    \"area_estudio\":\"Ingenierias\",\r\n    \"soporte_documental\":\"Acta de Grado\",\r\n    \"condicion\":\"Finalizado\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/soportesAcademicos/1",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"soportesAcademicos",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post SoportesAcademicos",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id_tutor\":1,\r\n    \"programa_academico\": \"Ingenieria de Sistemas\",\r\n    \"institucion_educativa\": \"Universidad Industrial de Colombia\",\r\n    \"tipo_programa\":\"Pregrado\",\r\n    \"area_estudio\":\"Ingenierias\",\r\n    \"soporte_documental\":\"Acta de Grado\",\r\n    \"condicion\":\"Finalizado\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/soportesAcademicos",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"soportesAcademicos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete SoportesAcademicos",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/api/soportesAcademicos/1",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"soportesAcademicos",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Get Tutores",
 					"request": {
 						"auth": {
@@ -1005,6 +1336,157 @@
 		{
 			"name": "Estudiante",
 			"item": [
+				{
+					"name": "Calificaciones",
+					"item": [
+						{
+							"name": "Get Calificaciones",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/api/calificacionesEstudiantes/4",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"calificacionesEstudiantes",
+										"4"
+									]
+								},
+								"description": "El Parametro a enviar es el **ID** del Estudiante (id_estudiante)."
+							},
+							"response": []
+						},
+						{
+							"name": "Get Calificacion",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/calificacionesEstudiantes/1",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"calificacionesEstudiantes",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Put Calificacion",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"calificacion\": 1,\r\n    \"comentario\": \"Incumplio el pago de la tutoria.\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/calificacionesEstudiantes/1",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"calificacionesEstudiantes",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post Calificacion",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id_tutoria\":1,\r\n    \"id_estudiante\":2,\r\n    \"calificacion\": 5,\r\n    \"comentario\": \"Atento a la tutoria..\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/calificacionesEstudiantes",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"calificacionesEstudiantes"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
 				{
 					"name": "Get Estudiantes",
 					"request": {

@@ -9,8 +9,9 @@ const authMiddleware = require("./middleware/authMiddleware");
 const usuarioRoutes = require("./routes/usuarioRoutes");
 const rolRoutes = require("./routes/rolRoutes");
 const tutorRoutes = require("./routes/tutorRoutes");
-const calificacionesRoutes = require("./routes/calificacionTutorRoutes");
+const calificacionTutorRoutes = require("./routes/calificacionTutorRoutes");
 const estudiantesRoutes = require("./routes/estudiantesRoutes");
+const calificacionEstudianteRoutes = require("./routes/calificacionEstudianteRoutes");
 const materiaRoutes = require("./routes/materiaRoutes");
 const disponibilidadRoutes = require("./routes/disponibilidadRoutes");
 
@@ -30,10 +31,11 @@ app.use(authMiddleware);
 app.use("/api/usuarios", usuarioRoutes);
 app.use("/api/roles", rolRoutes);
 app.use("/api/tutores", tutorRoutes);
-app.use("/api/calificacionesTutores", estudiantesRoutes);
+app.use("/api/calificacionesTutores", calificacionTutorRoutes);
 app.use("/api/materias", materiaRoutes);
 app.use("/api/disponibilidades", disponibilidadRoutes);
 app.use("/api/estudiantes", estudiantesRoutes);
+app.use("/api/calificacionesEstudiantes", calificacionEstudianteRoutes);
 
 // otras rutas también se incluyen aquí
 

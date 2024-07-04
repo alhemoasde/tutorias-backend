@@ -68,7 +68,7 @@ exports.updateCalificacion = async (req, res) => {
     }
     await calificacionUpdate.update(req.body);
     res.json({
-      materia: calificacionUpdate,
+      calificacion: calificacionUpdate,
       message: "Calificación actualizada exitosamente.",
     });
   } catch (error) {

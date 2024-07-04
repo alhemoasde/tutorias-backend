@@ -54,9 +54,6 @@ exports.createMateria = async (req, res) => {
     const materia = await Materia.create(req.body);
 
     //Asociar tutor
-    console.log(materia.id);
-    console.log(id_tutor);
-    console.log(costo_hora_tutoria);
     const tutorMateria = await TutoresMaterias.create({
       id_tutor: id_tutor,
       id_materia: materia.id,

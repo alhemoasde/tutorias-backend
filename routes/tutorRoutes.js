@@ -6,12 +6,12 @@ const authorizeMiddleware = require("../middleware/authorizeMiddleware");
 
 router.get(
   "/",
-  [authMiddleware, authorizeMiddleware(["ADMIN", "ESTUDIANTE"])],
+  [authMiddleware, authorizeMiddleware(["ADMIN", "TUTOR", "ESTUDIANTE"])],
   tutorController.getAllTutores
 );
 router.get(
   "/:id",
-  [authMiddleware, authorizeMiddleware(["ADMIN", "ESTUDIANTE"])],
+  [authMiddleware, authorizeMiddleware(["ADMIN", "TUTOR", "ESTUDIANTE"])],
   tutorController.getTutorById
 );
 router.post(

@@ -26,7 +26,7 @@ router.put(
 );
 router.delete(
   "/:id",
-  [authMiddleware, authorizeMiddleware(["ADMIN"])],
+  [authMiddleware, authorizeMiddleware(["ADMIN", "TUTOR"])],
   materiaController.deleteMateria
 );
 

@@ -11,7 +11,7 @@ router.get(
 );
 router.get(
   "/:id",
-  [authMiddleware, authorizeMiddleware(["ADMIN"])],
+  [authMiddleware, authorizeMiddleware(["ADMIN", "ESTUDIANTE"])],
   tutorController.getTutorById
 );
 router.post(

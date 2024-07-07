@@ -1624,6 +1624,234 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Archivos",
+			"item": [
+				{
+					"name": "Get Archivos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/api/archivos",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"archivos"
+							]
+						},
+						"description": "El Parametro a enviar es el **ID** del Tutor (id_tutor)."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Archivo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/api/archivos/4",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"archivos",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Archivo Download",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/api/archivos/download/2",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"archivos",
+								"download",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Archivo Foto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "foto",
+									"type": "file",
+									"src": "/C:/Users/Alejo/Downloads/Foto_Perfil_.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/api/archivos/photo/1",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"archivos",
+								"photo",
+								"1"
+							]
+						},
+						"description": "El parametro debe ser el ID del Usuario."
+					},
+					"response": []
+				},
+				{
+					"name": "Post Archivo SoporteAcademico",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "soportePdf",
+									"type": "file",
+									"src": "/C:/Users/Alejo/Downloads/acta_grado-ejemplo.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/api/archivos/photo/1",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"archivos",
+								"photo",
+								"1"
+							]
+						},
+						"description": "El parametro debe ser el ID del Soporte Academico."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Archivo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/api/archivos/3",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"archivos",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

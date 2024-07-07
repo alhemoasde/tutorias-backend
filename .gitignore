@@ -3,6 +3,7 @@
 # Archivos de sistema operativos
 .DS_Store
 Thumbs.db
+/uploads
 
 # Ignorar archivos de compilación
 /build/

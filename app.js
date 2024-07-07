@@ -15,6 +15,7 @@ const estudiantesRoutes = require("./routes/estudiantesRoutes");
 const calificacionEstudianteRoutes = require("./routes/calificacionEstudianteRoutes");
 const materiaRoutes = require("./routes/materiaRoutes");
 const disponibilidadRoutes = require("./routes/disponibilidadRoutes");
+const archivoRoutes = require("./routes/archivoRoutes");
 
 // Middleware para parsear JSON
 app.use(express.json());
@@ -38,6 +39,7 @@ app.use("/api/materias", materiaRoutes);
 app.use("/api/disponibilidades", disponibilidadRoutes);
 app.use("/api/estudiantes", estudiantesRoutes);
 app.use("/api/calificacionesEstudiantes", calificacionEstudianteRoutes);
+app.use("/api/archivos", archivoRoutes);
 
 // otras rutas también se incluyen aquí
 

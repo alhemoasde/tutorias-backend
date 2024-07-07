@@ -104,6 +104,12 @@ const JWT_SECRET = process.env.JWT_SECRET;
 npm install date-fns
 ```
 
+9. Instalar `multer` para el manejo de archivos.
+
+```bash
+npm install multer
+```
+
 `Nota:` No es necesario instalar una a una cada dependencia, solo debe ejecutar:
 
 ```bash
@@ -111,4 +117,5 @@ npm install
 ```
 
 ## Autores.
+
 - [Alejandro Herrera Montilla @alhemoasde](https://www.linkedin.com/in/alhemoasde) Backend Developer

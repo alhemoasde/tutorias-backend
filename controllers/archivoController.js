@@ -73,7 +73,7 @@ exports.createArchivoSoporteAcademico = async (req, res) => {
 
     const fileEntity = await Archivo.create({
       entidad: "SoportesAcademicos",
-      id_entidad: id_soporte_academico,
+      id_entidad: id_soporte,
       nombre: req.file.originalname,
       contentType: req.file.mimetype,
       url: `uploads/pdf/${id_soporte}/${req.file.filename}`,

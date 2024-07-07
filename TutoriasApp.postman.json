@@ -1807,14 +1807,14 @@
 							]
 						},
 						"url": {
-							"raw": "{{server}}/api/archivos/photo/1",
+							"raw": "{{server}}/api/archivos/soporte/1",
 							"host": [
 								"{{server}}"
 							],
 							"path": [
 								"api",
 								"archivos",
-								"photo",
+								"soporte",
 								"1"
 							]
 						},

@@ -1,4 +1,4 @@
-const { Tutor, Archivo } = require("../models");
+const { Usuario, SoportesAcademicos, Archivo } = require("../models");
 const path = require("path");
 const fs = require("fs");
 
@@ -42,6 +42,13 @@ exports.createArchivoFotoPerfil = async (req, res) => {
         .json({ error: "El archivo o el ID del Usuario no fue enviado" });
     }
 
+    const usuario = await Usuario.findByPk(id_usuario);
+    if(!usuario){
+      return res
+        .status(400)
+        .json({ error: "El ID del Usuario no corresponde a algún existente." });
+    }
+
     const fileEntity = await Archivo.create({
       entidad: "Usuario",
       id_entidad: id_usuario,
@@ -64,11 +71,18 @@ exports.createArchivoSoporteAcademico = async (req, res) => {
   try {
     if (
       !req.file ||
-      !id_soporte // Id Tutor
+      !id_soporte // Id soporte academico
     ) {
       return res.status(400).json({
         error: "El archivo o el ID del Soportes Academicos no fue enviado",
       });
+    }
+
+    const soportAcadem = await SoportesAcademicos.findByPk(id_soporte);
+    if(!soportAcadem){
+      return res
+        .status(400)
+        .json({ error: "El ID del Soportes Academicos no corresponde a algún existente." });
     }
 
     const fileEntity = await Archivo.create({

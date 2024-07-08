@@ -7,6 +7,9 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.Disponibilidad, {
         foreignKey: "id_disponibilidad",
       });
+      this.hasOne(models.Tutoria, {
+        foreignKey: "id_programacion",
+      });
     }
   }
   Programacion.init(
@@ -20,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATEONLY,
         allowNull: false,
       },
-      Hora_inicio: {
+      hora_inicio: {
         type: DataTypes.TIME,
         allowNull: false,
       },

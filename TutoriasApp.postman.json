@@ -1305,44 +1305,6 @@
 					"response": []
 				},
 				{
-					"name": "Put Tutoria",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Java - Basic\",\r\n    \"intensidad_horaria\":30,\r\n    \"nivel_educativo\": \"Bachillerato\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{server}}/api/tutorias/7",
-							"host": [
-								"{{server}}"
-							],
-							"path": [
-								"api",
-								"tutorias",
-								"7"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Post Tutoria",
 					"request": {
 						"auth": {
@@ -1374,6 +1336,44 @@
 							"path": [
 								"api",
 								"tutorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put Tutoria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"programacion\": {\r\n        \"hora_inicio\":\"10:00\",\r\n        \"hora_fin\":\"11:00\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/api/tutorias/1",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"tutorias",
+								"1"
 							]
 						}
 					},

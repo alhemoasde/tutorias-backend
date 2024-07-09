@@ -136,12 +136,6 @@ exports.createTutoria = async (req, res) => {
       return res.status(404).json({ error: "Disponibilidad no encontrada." });
     }
 
-    console.log(
-      disponibilidad.hora_inicio +
-        " en tutocontroller " +
-        disponibilidad.hora_fin
-    );
-
     const validedDisponibilidad = await isValidDisponibilidadTutor(
       disponibilidad,
       req.body.programacion,
@@ -192,36 +186,96 @@ exports.createTutoria = async (req, res) => {
 };
 
 exports.updateTutoria = async (req, res) => {
-  const {
-    fecha_solicitud,
-    estado,
-    id_tutor,
-    id_estudiante,
-    id_materia,
-    id_programacion,
-    id_facturacion,
-  } = req.body;
+  const { hora_inicio, hora_fin } = req.body;
   try {
-    if (
-      !req.params.id ||
-      !fecha_solicitud ||
-      !estado ||
-      !id_tutor ||
-      !id_estudiante ||
-      !id_materia ||
-      !id_programacion ||
-      !id_facturacion
-    ) {
+    if (!req.params.id || !hora_inicio || !hora_fin) {
       return res.status(400).json({ error: "Todos los campos son requeridos" });
     }
-    const materia = await Materia.findByPk(req.params.id);
-    if (!materia) {
-      return res.status(404).json({ error: "Tutoria no encontrada" });
+
+    const tutoriaUpdate = await Tutoria.findByPk(req.params.id);
+    if (!tutoriaUpdate) {
+      return res.status(404).json({ error: "La Tutoria no fue encontrada." });
     }
-    await materia.update(req.body);
-    res.json({ materia, message: "Tutoria actualizada exitosamente." });
+
+    const programacionUpdate = await Programacion.findByPk(
+      tutoriaUpdate.id_programacion,
+      {
+        include: [{ model: Disponibilidad }],
+      }
+    );
+    const facturacionUpdate = await Facturacion.findByPk(
+      tutoriaUpdate.id_facturacion
+    );
+    if (
+      !programacionUpdate ||
+      !programacionUpdate.Disponibilidad ||
+      !facturacionUpdate
+    ) {
+      return res
+        .status(404)
+        .json({ error: "La Programación o Facturación no fue encontrada." });
+    }
+
+    // Se completa el objeto programación enviado por el Body.
+    req.body.programacion.id = programacionUpdate.id;
+    req.body.programacion.fecha = programacionUpdate.fecha;
+
+    const validedDisponibilidad = await isValidDisponibilidadTutor(
+      programacionUpdate.Disponibilidad,
+      req.body.programacion,
+      tutoriaUpdate.id_tutor
+    );
+
+    if (!validedDisponibilidad.isValid) {
+      return res.status(400).json({ error: validedDisponibilidad.message });
+    }
+
+    // Solo se permite actualizar las horas dentro de la misma fecha.
+    programacionUpdate.hora_inicio = req.body.programacion.hora_inicio;
+    programacionUpdate.hora_fin = req.body.programacion.hora_fin;
+    await programacionUpdate.save();
+
+    // Calcular horas de tutoría
+    const horas = await calcularHoras(
+      programacionUpdate.hora_inicio + ":00",
+      programacionUpdate.hora_fin + ":00"
+    );
+
+    // Obtener valor por hora de la tutoría
+    const valorHora = await obtenerValorHora(
+      tutoriaUpdate.id_tutor,
+      tutoriaUpdate.id_materia
+    );
+
+    // Asignar los nuevos valores a la instancia de facturacionUpdate
+    facturacionUpdate.horas_tutoria = horas;
+    facturacionUpdate.valor_hora = valorHora;
+    facturacionUpdate.valor_total = horas * valorHora;
+
+    // Actualizar facturación
+    await facturacionUpdate.save();
+
+    // Se consulta nuevamente la tutoria con las actualizaciones de
+    // las asociaciones.
+    const tutoria = await Tutoria.findByPk(tutoriaUpdate.id, {
+      include: [
+        { model: Tutor },
+        { model: Estudiante },
+        { model: Materia },
+        { model: Programacion },
+        { model: Facturacion },
+      ],
+    });
+
+    res.status(201).json({
+      tutoria: tutoria,
+      programacion: programacionUpdate,
+      facturacion: facturacionUpdate,
+      message: "Tutoria actualizada exitosamente.",
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
+    throw error;
   }
 };
 

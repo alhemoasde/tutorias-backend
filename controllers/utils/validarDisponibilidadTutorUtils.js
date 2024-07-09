@@ -43,11 +43,23 @@ const isValidDisponibilidadTutor = async (
     }
 
     // Se obtienen las programaciones asociadas a la disponibilidad
-    const programaciones = await Programacion.findAll({
-      where: {
-        id_disponibilidad: disponibilidad.id,
-      },
-    });
+    // Si la programación tiene ID se esta en proceso de actualización, 
+    // se omite dicha programacion de los resultados.
+    const programaciones = null;
+    if (programacion.id) {
+      programaciones = await Programacion.findAll({
+        where: {
+          id_disponibilidad: disponibilidad.id,
+          id: programacion.id,
+        },
+      });
+    } else {
+      programaciones = await Programacion.findAll({
+        where: {
+          id_disponibilidad: disponibilidad.id,
+        },
+      });
+    }
 
     // Obtener las horas que contempla la disponibilidad
     const horasDisponibilidad = await calcularHoras(

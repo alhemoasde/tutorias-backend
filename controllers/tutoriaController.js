@@ -17,7 +17,6 @@ const {
 exports.getAllTutorias = async (req, res) => {
   try {
     const tutorias = await Tutoria.findAll({
-      where: { id_tutor: req.params.id_tutor },
       include: [
         { model: Tutor },
         { model: Estudiante },
@@ -65,7 +64,7 @@ exports.getAllTutoriasByTutor = async (req, res) => {
 exports.getAllTutoriasByEstudiante = async (req, res) => {
   try {
     const tutorias = await Tutoria.findAll({
-      where: { id_tutor: req.params.id_tutor },
+      where: { id_estudiante: req.params.id_estudiante },
       include: [
         { model: Tutor },
         { model: Estudiante },

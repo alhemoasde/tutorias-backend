@@ -1190,14 +1190,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{server}}/api/tutorias/1",
+							"raw": "{{server}}/api/tutorias/tutor/3",
 							"host": [
 								"{{server}}"
 							],
 							"path": [
 								"api",
 								"tutorias",
-								"1"
+								"tutor",
+								"3"
 							]
 						}
 					},
@@ -1219,14 +1220,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{server}}/api/tutorias/1",
+							"raw": "{{server}}/api/tutorias/estudiante/4",
 							"host": [
 								"{{server}}"
 							],
 							"path": [
 								"api",
 								"tutorias",
-								"1"
+								"estudiante",
+								"4"
 							]
 						}
 					},

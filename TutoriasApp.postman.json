@@ -1144,6 +1144,163 @@
 			]
 		},
 		{
+			"name": "Programacion",
+			"item": [
+				{
+					"name": "Get Programaciones",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/api/programaciones",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"programaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Programacion",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/api/programaciones/8",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"programaciones",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Programacion By Tutor",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/api/programaciones/tutor/3",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"programaciones",
+								"tutor",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Programacion By Estudiante",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/api/materias/7",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"materias",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Tutoria",
 			"item": [
 				{
@@ -1276,35 +1433,6 @@
 					"response": []
 				},
 				{
-					"name": "Cancel Tutoria",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{server}}/api/tutorias/4",
-							"host": [
-								"{{server}}"
-							],
-							"path": [
-								"api",
-								"tutorias",
-								"4"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Post Tutoria",
 					"request": {
 						"auth": {
@@ -1374,6 +1502,35 @@
 								"api",
 								"tutorias",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Tutoria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/api/tutorias/4",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"tutorias",
+								"4"
 							]
 						}
 					},

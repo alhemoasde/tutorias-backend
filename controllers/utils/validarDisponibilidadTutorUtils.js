@@ -43,9 +43,9 @@ const isValidDisponibilidadTutor = async (
     }
 
     // Se obtienen las programaciones asociadas a la disponibilidad
-    // Si la programación tiene ID se esta en proceso de actualización, 
+    // Si la programación tiene ID se esta en proceso de actualización,
     // se omite dicha programacion de los resultados.
-    const programaciones = null;
+    let programaciones = null;
     if (programacion.id) {
       programaciones = await Programacion.findAll({
         where: {

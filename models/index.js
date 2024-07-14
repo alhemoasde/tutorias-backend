@@ -22,6 +22,9 @@ const Programacion = require("./Programacion");
 const SoportesAcademicos = require("./SoportesAcademicos");
 const TutoresMaterias = require("./TutoresMaterias");
 const Tutoria = require("./Tutoria");
+const Archivo = require("./Archivo");
+const Contacto = require("./Contacto");
+const Experiencia = require("./Experiencia");
 
 const db = {
   Usuario,
@@ -38,6 +41,9 @@ const db = {
   SoportesAcademicos,
   TutoresMaterias,
   Tutoria,
+  Archivo,
+  Contacto,
+  Experiencia,
 };
 
 let sequelize;

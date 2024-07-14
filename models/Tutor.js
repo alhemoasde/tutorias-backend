@@ -22,6 +22,10 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.CalificacionesTutores, {
         foreignKey: "id_tutor",
       });
+      this.hasMany(models.Experiencia, {
+        foreignKey: 'id_tutor',
+        as: 'experiencias',
+      });
     }
   }
   Tutor.init(
@@ -45,6 +49,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       ciudad_ubicacion: DataTypes.STRING,
+      direccion: DataTypes.STRING,
       activo: {
         type: DataTypes.BOOLEAN,
         allowNull: false,

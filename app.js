@@ -18,6 +18,8 @@ const disponibilidadRoutes = require("./routes/disponibilidadRoutes");
 const archivoRoutes = require("./routes/archivoRoutes");
 const tutoriasRoutes = require("./routes/tutoriasRoutes");
 const programacionRoutes = require("./routes/programacionRoutes");
+const contactoRoutes = require("./routes/contactoRoutes");
+const experienciaRoutes = require("./routes/experienciaRoutes");
 
 // Middleware para parsear JSON
 app.use(express.json());
@@ -27,6 +29,7 @@ app.use(cors());
 
 // Rutas públicas (login y register)
 app.use("/api/auth", authRoutes);
+app.use("/api/contactos", contactoRoutes);
 
 // Middleware para proteger las rutas privadas
 app.use(authMiddleware);
@@ -44,6 +47,7 @@ app.use("/api/calificacionesEstudiantes", calificacionEstudianteRoutes);
 app.use("/api/archivos", archivoRoutes);
 app.use("/api/tutorias", tutoriasRoutes);
 app.use("/api/programaciones", programacionRoutes);
+app.use("/api/experiencias", experienciaRoutes);
 
 // otras rutas también se incluyen aquí
 

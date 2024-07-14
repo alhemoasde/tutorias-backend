@@ -29,7 +29,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"prospecto\":{\r\n    \"nombre\": \"Pepito\",\r\n    \"apellido\": \"Perez\",\r\n    \"telefono\": \"3124521697\",\r\n    \"email\": \"pepeperez@gmail.com\",\r\n    \"ciudad_ubicacion\":\"Bogotá\",\r\n    \"nivel_educativo\":\"Técnico\"\r\n  },\r\n  \"password\": \"12345\",\r\n  \"codigo_rol\":\"ESTUDIANTE\"\r\n}\r\n",
+							"raw": "{\r\n  \"prospecto\":{\r\n    \"nombre\": \"Jorge Daniel\",\r\n    \"apellido\": \"Mansuera Gomez\",\r\n    \"telefono\": \"3125264231\",\r\n    \"email\": \"mazu4512@gmail.com\",\r\n    \"ciudad_ubicacion\":\"Medellin\",\r\n    \"direccion\": \"Cra 2 #45-62\",\r\n    \"nivel_educativo\":\"Profesional\"\r\n  },\r\n  \"password\": \"12345\",\r\n  \"codigo_rol\":\"TUTOR\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -70,7 +70,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"prospecto\":{\r\n    \"nombre\": \"Agil\",\r\n    \"apellido\": \"Group Dev\",\r\n    \"telefono\": \"320000000\",\r\n    \"email\": \"agilgroupdev@gmail.com\",\r\n    \"ciudad_ubicacion\":\"Bogotá Dc\",\r\n    \"nivel_educativo\":\"Magistier\"\r\n  },\r\n  \"password\": \"12345\"\r\n}\r\n",
+							"raw": "{\r\n  \"prospecto\":{\r\n    \"nombre\": \"Agil\",\r\n    \"apellido\": \"Group Dev\",\r\n    \"telefono\": \"320000000\",\r\n    \"email\": \"agilgroupdev@gmail.com\",\r\n    \"ciudad_ubicacion\":\"Bogotá Dc\",\r\n    \"direccion\":\"Cra 4 #45-21\",\r\n    \"nivel_educativo\":\"Magistier\"\r\n  },\r\n  \"password\": \"12345\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -827,6 +827,216 @@
 					]
 				},
 				{
+					"name": "Experiencia",
+					"item": [
+						{
+							"name": "Get Experiencias",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/api/experiencias",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"experiencias"
+									]
+								},
+								"description": "El Parametro a enviar es el **ID** del Tutor (id_tutor)."
+							},
+							"response": []
+						},
+						{
+							"name": "Get Experiencias Tutor",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/api/experiencias/tutor/3",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"experiencias",
+										"tutor",
+										"3"
+									]
+								},
+								"description": "El Parametro a enviar es el **ID** del Tutor (id_tutor)."
+							},
+							"response": []
+						},
+						{
+							"name": "Get Experiencia",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/experiencia/1",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"experiencia",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Put Experiencia",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"contratante\": \"Globalt LTDA\",\r\n    \"cargo\": \"Backend Developer Level 4\",\r\n    \"fecha_ingreso\":\"2022-01-21\",\r\n    \"fecha_salida\":\"2023-08-13\",\r\n    \"experiencia_docente\":false,\r\n    \"actual\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/experiencias/1",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"experiencias",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post Experiencia",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id_tutor\":3,\r\n    \"contratante\": \"Globalt SAS\",\r\n    \"cargo\": \"Backend Developer Level 2\",\r\n    \"fecha_ingreso\":\"2022-01-20\",\r\n    \"fecha_salida\":\"2023-08-12\",\r\n    \"experiencia_docente\":false,\r\n    \"actual\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/experiencias",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"experiencias"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Experiencia",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/api/experiencias/1",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"experiencias",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Get Tutores",
 					"request": {
 						"auth": {
@@ -941,7 +1151,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"nombre\",\r\n    \"apellido\": \"apellido\",\r\n    \"telefono\": \"telefono\",\r\n    \"email\": \"email\",\r\n    \"ciudad_ubicacion\": \"ciudad_ubicacion\",\r\n    \"nivel_educativo\": \"nivel_educativo\",\r\n    \"activo\": true,\r\n    \"id_usuario\": 21\r\n}",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"nombre\",\r\n    \"apellido\": \"apellido\",\r\n    \"telefono\": \"telefono\",\r\n    \"email\": \"email\",\r\n    \"ciudad_ubicacion\": \"ciudad_ubicacion\",\r\n    \"direccion\": \"direccion\",\r\n    \"nivel_educativo\": \"nivel_educativo\",\r\n    \"activo\": true,\r\n    \"id_usuario\": 21\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1144,6 +1354,139 @@
 			]
 		},
 		{
+			"name": "Contacto",
+			"item": [
+				{
+					"name": "Get Contactos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/api/contactos",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"contactos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Contacto",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/api/contactos/1",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"contactos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Contacto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/api/contactos/1",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"contactos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Contacto",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombres\": \"Felipe\",\r\n    \"apellidos\":\"Diaz Caseres\",\r\n    \"email\": \"fedipal@hotmail.com\",\r\n    \"mensaje\": \"Deseo conocer mas información sobres sus servicios. Gracias\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/api/contactos",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"contactos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Programacion",
 			"item": [
 				{
@@ -1285,14 +1628,15 @@
 							}
 						},
 						"url": {
-							"raw": "{{server}}/api/materias/7",
+							"raw": "{{server}}/api/programaciones/estudiante/3",
 							"host": [
 								"{{server}}"
 							],
 							"path": [
 								"api",
-								"materias",
-								"7"
+								"programaciones",
+								"estudiante",
+								"3"
 							]
 						}
 					},
@@ -1997,7 +2341,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"nombre\",\r\n    \"apellido\": \"apellido\",\r\n    \"telefono\": \"telefono\",\r\n    \"email\": \"email\",\r\n    \"ciudad_ubicacion\": \"ciudad_ubicacion\",\r\n    \"nivel_educativo\": \"nivel_educativo\",\r\n    \"activo\": true,\r\n    \"id_usuario\": 21\r\n}",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"nombre\",\r\n    \"apellido\": \"apellido\",\r\n    \"telefono\": \"telefono\",\r\n    \"email\": \"email\",\r\n    \"ciudad_ubicacion\": \"ciudad_ubicacion\",\r\n    \"direccion\": \"direccion\",\r\n    \"activo\": true,\r\n    \"id_usuario\": 21\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
